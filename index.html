@@ -13,7 +13,9 @@
   header { background:#141a22; color:#fff; padding:20px 16px 18px; }
   .wrap { max-width: 980px; margin: 0 auto; }
   .brand { display:flex; align-items:center; gap:14px; }
-  .brand img { width:52px; height:52px; border-radius:13px; }
+  .brand img { width:52px; height:52px; border-radius:13px; display:block; }
+  .logobtn { background:none; border:none; padding:0; cursor:pointer; flex:none; border-radius:13px; }
+  .logobtn:focus-visible { outline:2px solid #e2483d; outline-offset:2px; }
   h1 { margin:0 0 4px; font-size: 28px; letter-spacing:.2px; }
   h1 .plus { color:#e2483d; }
   .tag { margin:0; color:#c7d0da; font-size:14px; }
@@ -58,8 +60,9 @@
   #drawer h3 { margin:20px 0 8px; font-size:14px; text-transform:uppercase; letter-spacing:.6px; color:var(--mut); }
   .drawerhead { display:flex; align-items:center; }
   .closebtn { margin-left:auto; background:#fff; border:1px solid var(--line); border-radius:9px; width:36px; height:36px; font-size:17px; cursor:pointer; }
-  .filters { display:grid; gap:8px; margin:4px 0; }
-  .filters select, .filters input[type="text"] { padding:9px 10px; border:1px solid var(--line); border-radius:8px; font-size:15px; background:#fff; width:100%; }
+  .filters { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 6px; align-items:center; }
+  .filters select, .filters input[type="text"] { padding:9px 10px; border:1px solid var(--line); border-radius:8px; font-size:15px; background:#fff; }
+  .filters input[type="text"] { flex:1 1 190px; }
   .filters label { font-size:15px; display:flex; align-items:center; gap:7px; padding:2px 0; }
   .navlist { display:grid; gap:6px; }
   .navlist button { text-align:left; background:#f4f6f8; border:1px solid var(--line); border-radius:9px; padding:11px 13px; font-size:16px; cursor:pointer; color:var(--ink); }
@@ -72,7 +75,7 @@
 <header>
   <div class="wrap">
     <div class="brand">
-      <img src="logo.png" alt="Ontario Track Days+ logo — a track outline with the letters OTD">
+      <button class="logobtn" id="logoHome" aria-label="Ontario Track Days+ — back to the main page"><img src="logo.png" alt="Ontario Track Days+ logo — a track outline with the letters OTD"></button>
       <div>
         <h1>Ontario Track Days<span class="plus">+</span></h1>
         <p class="tag">Car track days in Ontario, in one place — HPDE, open lapping, driver schools, Time Attack (OTA &amp; CSCS), special events with open lapping, and winter lapping. Free, no account, details straight from the organizers.</p>
@@ -89,22 +92,10 @@
     <button class="closebtn" id="menuClose" aria-label="Close menu">✕</button>
   </div>
 
-  <h3>Search &amp; filter</h3>
-  <div class="filters">
-    <input type="text" id="fSearch" placeholder="Search title, host, track…" aria-label="Search listings">
-    <select id="fTrack" aria-label="Filter by track"><option value="">All tracks</option></select>
-    <select id="fCat" aria-label="Filter by category"><option value="">All categories</option></select>
-    <select id="fMonth" aria-label="Filter by month"><option value="">All months</option></select>
-    <label><input type="checkbox" id="fNovice"> Novice welcome</label>
-  </div>
-  <div class="btnrow">
-    <button class="btn" id="applyFilters">Show matching events</button>
-    <button class="btn ghost" id="clearFilters">Clear</button>
-  </div>
-
   <h3>Go to</h3>
   <nav class="navlist">
     <button data-view="events">Find events</button>
+    <button id="searchLink">Search &amp; filter</button>
     <button data-view="saved">Saved events <span id="savedCount"></span></button>
     <button data-view="tracks">The tracks</button>
     <button data-view="about">About us</button>
@@ -130,6 +121,14 @@
     <section id="view-events">
       <p class="notice"><strong>Building for the 2027 season.</strong> Listings land as organizers publish their 2027 calendars (most appear January–March). Winter lapping dates at TMP may show up sooner — check back, or subscribe to the calendar from the menu.</p>
       <p class="notice sample" id="sampleBanner" hidden><strong>Sample preview only.</strong> The listings below are dummy entries built from 2026 season patterns so the layout can be checked — they are <strong>not</strong> real 2027 announcements, the prices are samples, and the Register buttons are dummies.</p>
+      <div class="filters">
+        <input type="text" id="fSearch" placeholder="Search title, host, track…" aria-label="Search listings">
+        <select id="fTrack" aria-label="Filter by track"><option value="">All tracks</option></select>
+        <select id="fCat" aria-label="Filter by category"><option value="">All categories</option></select>
+        <select id="fMonth" aria-label="Filter by month"><option value="">All months</option></select>
+        <label><input type="checkbox" id="fNovice"> Novice welcome</label>
+        <button class="btn ghost" id="clearFilters">Clear</button>
+      </div>
       <p id="count"></p>
       <div id="list"></div>
     </section>
@@ -196,7 +195,7 @@
     <p>Ontario Track Days+ is a free community resource curated by Paul Murray. Listings are taken from organizer-published sources and show a last-verified date. Spotted an error? Email <a href="mailto:ontariotrackdays@gmail.com">ontariotrackdays@gmail.com</a>.</p>
     <p>Track logos belong to their respective tracks and are shown only to identify each venue.</p>
     <p><a href="https://docs.google.com/spreadsheets/d/1E3V78O6qYAWK9xRD9XsDwDtrm19LgKwgrkD-NqzuGLU/edit" target="_blank" rel="noopener">Full list (spreadsheet)</a> · <a href="https://calendar.google.com/calendar/ical/14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8@group.calendar.google.com/public/basic.ics">Calendar feed (ICS)</a></p>
-    <p>v4</p>
+    <p>v5</p>
   </div>
 </footer>
 <script src="events.js"></script>
@@ -236,6 +235,7 @@
   Array.prototype.forEach.call(drawer.querySelectorAll('[data-view]'), function (b) {
     b.addEventListener('click', function () { showView(b.getAttribute('data-view')); });
   });
+  document.getElementById('logoHome').addEventListener('click', function () { showView('events'); });
   document.getElementById('drawerSheet').addEventListener('click', function () { window.open('https://docs.google.com/spreadsheets/d/1E3V78O6qYAWK9xRD9XsDwDtrm19LgKwgrkD-NqzuGLU/edit', '_blank'); });
   document.getElementById('drawerIcs').addEventListener('click', function () { location.href = 'https://calendar.google.com/calendar/ical/14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8@group.calendar.google.com/public/basic.ics'; });
   document.getElementById('drawerKofi').addEventListener('click', function () { window.open('https://ko-fi.com/ontariotrackdays', '_blank'); });
@@ -305,8 +305,9 @@
   function render() {
     var rows = events.filter(matches);
     countEl.textContent = rows.length
-      ? (sampleMode ? rows.length + ' sample listing' + (rows.length === 1 ? '' : 's') + ' (preview only)' : rows.length + ' upcoming event' + (rows.length === 1 ? '' : 's')) + (filtersActive() ? ' — filters on (Menu to change)' : '')
+      ? (sampleMode ? rows.length + ' sample listing' + (rows.length === 1 ? '' : 's') + ' (preview only)' : rows.length + ' upcoming event' + (rows.length === 1 ? '' : 's')) + (filtersActive() ? ' — filters on' : '')
       : (sampleMode ? 'No sample listings match those filters.' : (filtersActive() ? 'No listings match those filters.' : 'No listings yet — 2027 calendars publish January to March.'));
+
     listEl.innerHTML = rows.map(cardHTML).join('');
     wireSaveButtons(listEl);
     var savedRows = events.filter(isSaved);
@@ -318,9 +319,12 @@
   }
   [fTrack, fCat, fMonth, fNovice].forEach(function (el) { el.addEventListener('change', render); });
   fSearch.addEventListener('input', render);
-  document.getElementById('applyFilters').addEventListener('click', function () { showView('events'); });
   document.getElementById('clearFilters').addEventListener('click', function () {
     fSearch.value = ''; fTrack.value = ''; fCat.value = ''; fMonth.value = ''; fNovice.checked = false; render();
+  });
+  document.getElementById('searchLink').addEventListener('click', function () {
+    showView('events');
+    setTimeout(function () { try { fSearch.focus({ preventScroll: true }); } catch (e) {} }, 60);
   });
 
   /* ---------- settings ---------- */
