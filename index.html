@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ontario Track Days+ — Ontario HPDE, Lapping &amp; Time Attack Calendar</title>
+<meta name="description" content="A free public calendar of car track days in Ontario: HPDE, open lapping, driver schools, Ontario Time Attack & CSCS, special events with open lapping, and winter lapping — at TMP, Grand Bend, CTMP DDT & GP, Shannonville and Calabogie.">
+<style>
+  :root { --ink:#1c2430; --mut:#5a6572; --line:#d8dee6; --accent:#b3231b; --card:#ffffff; --bg:#f4f6f8; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color:var(--ink); background:var(--bg); }
+  header { background:#141a22; color:#fff; padding:28px 16px 22px; }
+  .wrap { max-width: 980px; margin: 0 auto; }
+  .brand { display:flex; align-items:center; gap:14px; }
+  .brand img { width:58px; height:58px; border-radius:14px; }
+  h1 { margin:0 0 6px; font-size: 30px; letter-spacing:.2px; }
+  h1 .plus { color:#e2483d; }
+  .tag { margin:0; color:#c7d0da; font-size:15px; }
+  .links { margin-top:16px; display:flex; flex-wrap:wrap; gap:8px; }
+  .links a { color:#fff; border:1px solid #3a4656; border-radius:999px; padding:7px 13px; text-decoration:none; font-size:14px; }
+  .links a:hover { border-color:#e2483d; }
+  main { padding: 20px 16px 8px; }
+  .notice { background:#fff7e6; border:1px solid #ecd9a0; border-radius:10px; padding:12px 14px; font-size:15px; }
+  .filters { display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 6px; }
+  .filters select { padding:8px 10px; border:1px solid var(--line); border-radius:8px; font-size:14px; background:#fff; }
+  .filters label { font-size:14px; display:flex; align-items:center; gap:6px; padding:6px 4px; }
+  #count { color:var(--mut); font-size:14px; margin:6px 0 12px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin:0 0 10px; }
+  .card h3 { margin:0 0 4px; font-size:17px; }
+  .meta { color:var(--mut); font-size:14px; margin:2px 0; }
+  .cost { font-weight:600; }
+  .card a { color:var(--accent); }
+  section.tracks { margin: 26px 0 6px; }
+  .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:10px; }
+  .track { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; }
+  .track h4 { margin:0 0 4px; font-size:15px; }
+  .track p { margin:0; color:var(--mut); font-size:14px; }
+  footer { border-top:1px solid var(--line); margin-top:28px; padding:16px; color:var(--mut); font-size:14px; }
+  footer a { color:var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <img src="logo.png" alt="Ontario Track Days+ logo — a track outline with the letters OTD">
+      <div>
+        <h1>Ontario Track Days<span class="plus">+</span></h1>
+        <p class="tag">Every car track day in Ontario, in one place — HPDE, open lapping, driver schools, Time Attack (OTA &amp; CSCS), special events with open lapping, and winter lapping. Free, no account, details straight from the organizers.</p>
+      </div>
+    </div>
+    <nav class="links">
+      <a href="https://docs.google.com/spreadsheets/d/1E3V78O6qYAWK9xRD9XsDwDtrm19LgKwgrkD-NqzuGLU/edit" target="_blank" rel="noopener">Prefer a spreadsheet? View the full list</a>
+      <a href="https://calendar.google.com/calendar/ical/14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8@group.calendar.google.com/public/basic.ics">Subscribe to the calendar (ICS)</a>
+      <a href="https://ko-fi.com/ontariotrackdays" target="_blank" rel="noopener">Buy me a lug nut — support on Ko-fi</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <p class="notice"><strong>Building for the 2027 season.</strong> Listings land as organizers publish their 2027 calendars (most appear January–March). Winter lapping dates at TMP may show up sooner — check back, or subscribe to the calendar above.</p>
+
+    <div class="filters">
+      <select id="fTrack" aria-label="Filter by track"><option value="">All tracks</option></select>
+      <select id="fCat" aria-label="Filter by category"><option value="">All categories</option></select>
+      <select id="fMonth" aria-label="Filter by month"><option value="">All months</option></select>
+      <label><input type="checkbox" id="fNovice"> Novice welcome</label>
+    </div>
+    <p id="count"></p>
+    <div id="list"></div>
+
+    <section class="tracks">
+      <h2>The tracks</h2>
+      <div class="grid">
+        <div class="track"><h4>Toronto Motorsports Park — Cayuga</h4><p>House open car lapping (cash at the gate), Pinnacle/PADA, Touge.ca, special events like Bimmerfest Canada, and winter lapping.</p></div>
+        <div class="track"><h4>Grand Bend Motorplex</h4><p>Organizer and club lapping days, Euro Klassik weekend lapping. A track in transition for 2027 — watch this space.</p></div>
+        <div class="track"><h4>Canadian Tire Motorsport Park — DDT</h4><p>Driver development track: Touge.ca, Motori, OTA school, club days. Configurations vary by event — each listing names the one in use.</p></div>
+        <div class="track"><h4>Canadian Tire Motorsport Park — GP</h4><p>The big track: DriveTeq, Trillium BMW, PCA UCR, OTA, Infinite Motorsports. Mostly intermediate/advanced.</p></div>
+        <div class="track"><h4>Shannonville Motorsport Park</h4><p>Motion Monday evenings, GT Race days, St. LAC evenings, Touge.ca. Four configurations — the listing always names the layout.</p></div>
+        <div class="track"><h4>Calabogie Motorsports Park</h4><p>Canada's longest track. Most lapping requires a prior sign-off to run solo; Track Nights and HPDE days run spring to fall.</p></div>
+      </div>
+    </section>
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    <p>Ontario Track Days+ is a free community resource curated by Paul Murray. Every listing is taken from organizer-published sources and shows its last-verified date. Spotted an error? Contact details arrive with the full launch.</p>
+    <p><a href="https://docs.google.com/spreadsheets/d/1E3V78O6qYAWK9xRD9XsDwDtrm19LgKwgrkD-NqzuGLU/edit" target="_blank" rel="noopener">Full list (spreadsheet)</a> · <a href="https://calendar.google.com/calendar/ical/14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8@group.calendar.google.com/public/basic.ics">Calendar feed (ICS)</a></p>
+    <p>v1</p>
+  </div>
+</footer>
+<script src="events.js"></script>
+<script>
+(function () {
+  var events = (window.OTD_EVENTS || []).slice();
+  var listEl = document.getElementById('list'), countEl = document.getElementById('count');
+  var fTrack = document.getElementById('fTrack'), fCat = document.getElementById('fCat'),
+      fMonth = document.getElementById('fMonth'), fNovice = document.getElementById('fNovice');
+  function fill(sel, vals) { vals.forEach(function (v) { var o = document.createElement('option'); o.value = v; o.textContent = v; sel.appendChild(o); }); }
+  fill(fTrack, Array.from(new Set(events.map(function (e) { return e.track; }))).sort());
+  fill(fCat, Array.from(new Set(events.map(function (e) { return e.category; }))).sort());
+  fill(fMonth, Array.from(new Set(events.map(function (e) { return e.date.slice(0, 7); }))).sort());
+  function render() {
+    var rows = events.filter(function (e) {
+      return (!fTrack.value || e.track === fTrack.value) &&
+             (!fCat.value || e.category === fCat.value) &&
+             (!fMonth.value || e.date.slice(0, 7) === fMonth.value) &&
+             (!fNovice.checked || e.novice === true);
+    });
+    countEl.textContent = rows.length ? rows.length + ' upcoming event' + (rows.length === 1 ? '' : 's') : 'No listings yet — 2027 calendars publish January to March.';
+    listEl.innerHTML = rows.map(function (e) {
+      var lines = ['<div class="card"><h3>' + e.title + '</h3>',
+        '<p class="meta">' + e.dateLabel + ' · ' + e.track + (e.configuration ? ' — ' + e.configuration : '') + '</p>',
+        '<p class="meta">' + e.category + ' · Host: ' + e.host + (e.times ? ' · ' + e.times : '') + '</p>'];
+      if (e.cost) lines.push('<p class="meta cost">' + e.cost + '</p>');
+      if (e.notes) lines.push('<p class="meta">' + e.notes + '</p>');
+      if (e.register) lines.push('<p class="meta"><a href="' + e.register + '" target="_blank" rel="noopener">Register</a></p>');
+      lines.push('</div>');
+      return lines.join('');
+    }).join('');
+  }
+  [fTrack, fCat, fMonth, fNovice].forEach(function (el) { el.addEventListener('change', render); });
+  render();
+})();
+</script>
+</body>
+</html>
