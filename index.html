@@ -9,7 +9,7 @@
   :root { --ink:#1c2430; --mut:#5a6572; --line:#d8dee6; --accent:#b3231b; --card:#ffffff; --bg:#f4f6f8; }
   * { box-sizing: border-box; }
   [hidden] { display:none !important; }
-  body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color:var(--ink); background:var(--bg); }
+  body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color:var(--ink); background:var(--bg); overflow-x:hidden; }
   header { background:#141a22; color:#fff; padding:20px 16px 18px; }
   .wrap { max-width: 980px; margin: 0 auto; }
   .brand { display:flex; align-items:center; gap:14px; }
@@ -49,9 +49,9 @@
   .track.clickable { cursor:pointer; }
   .track.clickable:hover, .track.clickable:focus-visible { border-color:var(--accent); outline:none; }
   .track .more { color:var(--accent); font-size:13px; margin-top:7px; }
-  .kv { display:grid; grid-template-columns:96px 1fr; gap:6px 12px; font-size:15px; margin:12px 0 4px; }
+  .kv { display:grid; grid-template-columns:88px minmax(0, 1fr); gap:6px 12px; font-size:15px; margin:12px 0 4px; }
   .kv dt { color:var(--mut); }
-  .kv dd { margin:0; }
+  .kv dd { margin:0; min-width:0; overflow-wrap:anywhere; }
   .kv a { color:var(--accent); }
   .socrow { display:flex; gap:8px; margin-top:10px; }
   .socbtn { width:34px; height:34px; border-radius:50%; border:1px solid var(--line); background:#fff; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; }
@@ -63,7 +63,8 @@
   .socbtn[data-net="youtube"] { color:#FF0000; }
   .socbtn[data-net="tiktok"] { color:#000; }
   .socwrap { display:flex; flex-wrap:wrap; gap:8px; }
-  .socchip { display:inline-flex; align-items:center; gap:7px; border:1px solid var(--line); border-radius:999px; padding:6px 12px 6px 9px; background:#fff; text-decoration:none; font-size:14px; }
+  .socchip { display:inline-flex; align-items:center; gap:7px; border:1px solid var(--line); border-radius:999px; padding:6px 12px 6px 9px; background:#fff; text-decoration:none; font-size:14px; max-width:100%; min-width:0; }
+  .socchip .handle { overflow-wrap:anywhere; }
   .socchip svg { width:16px; height:16px; fill:currentColor; flex:none; }
   .socchip .pname { color:var(--ink); }
   .socchip .handle { color:var(--mut); }
@@ -231,7 +232,7 @@
     <p>Ontario Track Days+ is a free community resource curated by Paul Murray. Listings are taken from organizer-published sources and show a last-verified date. Spotted an error? Email <a href="mailto:ontariotrackdays@gmail.com">ontariotrackdays@gmail.com</a>.</p>
     <p>Track logos belong to their respective tracks and are shown only to identify each venue.</p>
     <p><a href="https://docs.google.com/spreadsheets/d/1E3V78O6qYAWK9xRD9XsDwDtrm19LgKwgrkD-NqzuGLU/edit" target="_blank" rel="noopener">Full list (spreadsheet)</a> · <a href="https://calendar.google.com/calendar/ical/14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8@group.calendar.google.com/public/basic.ics">Calendar feed (ICS)</a></p>
-    <p>v11</p>
+    <p>v12</p>
   </div>
 </footer>
 <script src="events.js"></script>
