@@ -45,6 +45,13 @@
   .darkchip.sm { padding:3px 6px; border-radius:6px; margin-right:7px; }
   .darkchip.sm img { height:15px; }
   .track p { margin:0; color:var(--mut); font-size:14px; }
+  .track.clickable { cursor:pointer; }
+  .track.clickable:hover, .track.clickable:focus-visible { border-color:var(--accent); outline:none; }
+  .track .more { color:var(--accent); font-size:13px; margin-top:7px; }
+  .kv { display:grid; grid-template-columns:96px 1fr; gap:6px 12px; font-size:15px; margin:12px 0 4px; }
+  .kv dt { color:var(--mut); }
+  .kv dd { margin:0; }
+  .kv a { color:var(--accent); }
   .panel { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px; margin:0 0 10px; font-size:15px; }
   .panel p { margin:8px 0; }
   .panel a { color:var(--accent); }
@@ -141,14 +148,20 @@
 
     <section id="view-tracks" hidden>
       <h2>The tracks</h2>
+      <p class="subcount">Tap a track for its contact details, socials and directions.</p>
       <div class="grid">
-        <div class="track"><div class="thead"><img class="tlogo round" src="logos/tmp.jpg" alt="Toronto Motorsports Park logo"><h4>Toronto Motorsports Park — Cayuga</h4></div><p>House open car lapping (cash at the gate), Pinnacle/PADA, Touge.ca, special events like Bimmerfest Canada, and winter lapping.</p></div>
-        <div class="track"><div class="thead"><img class="tlogo" src="logos/grand-bend.jpg" alt="Grand Bend Motorplex logo"><h4>Grand Bend Motorplex</h4></div><p>Organizer and club lapping days, Euro Klassik weekend lapping. A track in transition for 2027 — watch this space.</p></div>
-        <div class="track"><div class="thead"><img class="tlogo" src="logos/ctmp.png" alt="Canadian Tire Motorsport Park logo"><h4>Canadian Tire Motorsport Park — DDT</h4></div><p>Driver development track: Touge.ca, Motori, OTA school, club days. Configurations vary by event — each listing names the one in use.</p></div>
-        <div class="track"><div class="thead"><img class="tlogo" src="logos/ctmp.png" alt="Canadian Tire Motorsport Park logo"><h4>Canadian Tire Motorsport Park — GP</h4></div><p>The big track: DriveTeq, Trillium BMW, PCA UCR, OTA, Infinite Motorsports. Mostly intermediate/advanced.</p></div>
-        <div class="track"><div class="thead"><span class="darkchip"><img src="logos/shannonville.png" alt="Shannonville Motorsport Park logo"></span><h4>Shannonville Motorsport Park</h4></div><p>Motion Monday evenings, GT Race days, St. LAC evenings, Touge.ca. Four configurations — the listing always names the layout.</p></div>
-        <div class="track"><div class="thead"><img class="tlogo" src="logos/calabogie.png" alt="Calabogie Motorsports Park logo"><h4>Calabogie Motorsports Park</h4></div><p>Canada's longest track. Most lapping requires a prior sign-off to run solo; Track Nights and HPDE days run spring to fall.</p></div>
+        <div class="track clickable" data-tkey="tmp" data-etrack="Toronto Motorsports Park — Cayuga" role="button" tabindex="0"><div class="thead"><img class="tlogo round" src="logos/tmp.jpg" alt="Toronto Motorsports Park logo"><h4>Toronto Motorsports Park — Cayuga</h4></div><p>House open car lapping (cash at the gate), Pinnacle/PADA, Touge.ca, special events like Bimmerfest Canada, and winter lapping.</p><p class="more">Contact details →</p></div>
+        <div class="track clickable" data-tkey="grandbend" data-etrack="Grand Bend Motorplex" role="button" tabindex="0"><div class="thead"><img class="tlogo" src="logos/grand-bend.jpg" alt="Grand Bend Motorplex logo"><h4>Grand Bend Motorplex</h4></div><p>Organizer and club lapping days, Euro Klassik weekend lapping. A track in transition for 2027 — watch this space.</p><p class="more">Contact details →</p></div>
+        <div class="track clickable" data-tkey="ctmp" data-etrack="Canadian Tire Motorsport Park — DDT" role="button" tabindex="0"><div class="thead"><img class="tlogo" src="logos/ctmp.png" alt="Canadian Tire Motorsport Park logo"><h4>Canadian Tire Motorsport Park — DDT</h4></div><p>Driver development track: Touge.ca, Motori, OTA school, club days. Configurations vary by event — each listing names the one in use.</p><p class="more">Contact details →</p></div>
+        <div class="track clickable" data-tkey="ctmp" data-etrack="Canadian Tire Motorsport Park — GP" role="button" tabindex="0"><div class="thead"><img class="tlogo" src="logos/ctmp.png" alt="Canadian Tire Motorsport Park logo"><h4>Canadian Tire Motorsport Park — GP</h4></div><p>The big track: DriveTeq, Trillium BMW, PCA UCR, OTA, Infinite Motorsports. Mostly intermediate/advanced.</p><p class="more">Contact details →</p></div>
+        <div class="track clickable" data-tkey="shannonville" data-etrack="Shannonville Motorsport Park" role="button" tabindex="0"><div class="thead"><span class="darkchip"><img src="logos/shannonville.png" alt="Shannonville Motorsport Park logo"></span><h4>Shannonville Motorsport Park</h4></div><p>Motion Monday evenings, GT Race days, St. LAC evenings, Touge.ca. Four configurations — the listing always names the layout.</p><p class="more">Contact details →</p></div>
+        <div class="track clickable" data-tkey="calabogie" data-etrack="Calabogie Motorsports Park" role="button" tabindex="0"><div class="thead"><img class="tlogo" src="logos/calabogie.png" alt="Calabogie Motorsports Park logo"><h4>Calabogie Motorsports Park</h4></div><p>Canada's longest track. Most lapping requires a prior sign-off to run solo; Track Nights and HPDE days run spring to fall.</p><p class="more">Contact details →</p></div>
       </div>
+    </section>
+
+    <section id="view-track" hidden>
+      <p><button class="btn ghost" id="trackBack">← All tracks</button></p>
+      <div id="trackDetail"></div>
     </section>
 
     <section id="view-about" hidden>
@@ -195,7 +208,7 @@
     <p>Ontario Track Days+ is a free community resource curated by Paul Murray. Listings are taken from organizer-published sources and show a last-verified date. Spotted an error? Email <a href="mailto:ontariotrackdays@gmail.com">ontariotrackdays@gmail.com</a>.</p>
     <p>Track logos belong to their respective tracks and are shown only to identify each venue.</p>
     <p><a href="https://docs.google.com/spreadsheets/d/1E3V78O6qYAWK9xRD9XsDwDtrm19LgKwgrkD-NqzuGLU/edit" target="_blank" rel="noopener">Full list (spreadsheet)</a> · <a href="https://calendar.google.com/calendar/ical/14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8@group.calendar.google.com/public/basic.ics">Calendar feed (ICS)</a></p>
-    <p>v5</p>
+    <p>v6</p>
   </div>
 </footer>
 <script src="events.js"></script>
@@ -226,7 +239,7 @@
   document.getElementById('menuClose').addEventListener('click', closeMenu);
   overlay.addEventListener('click', closeMenu);
   document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') closeMenu(); });
-  var viewNames = ['events', 'saved', 'tracks', 'about', 'settings'];
+  var viewNames = ['events', 'saved', 'tracks', 'track', 'about', 'settings'];
   function showView(name) {
     viewNames.forEach(function (v) { document.getElementById('view-' + v).hidden = v !== name; });
     closeMenu();
@@ -326,6 +339,86 @@
     showView('events');
     setTimeout(function () { try { fSearch.focus({ preventScroll: true }); } catch (e) {} }, 60);
   });
+
+  /* ---------- track detail cards (contacts from the tracks' own sites, Nov 2026) ---------- */
+  var TRACK_INFO = {
+    tmp: {
+      logo: '<img class="tlogo round" src="logos/tmp.jpg" alt="">',
+      blurb: 'House open car lapping (cash at the gate), Pinnacle/PADA, Touge.ca, special events like Bimmerfest Canada, and winter lapping.',
+      address: '1040 Kohler Rd, Cayuga, ON N0A 1E0',
+      phones: [['905-772-0303', '+19057720303'], ['1-866-824-7223 (toll-free)', '+18668247223']],
+      email: 'info@tmpcayuga.com',
+      web: ['torontomotorsportspark.com', 'https://torontomotorsportspark.com'],
+      socials: [['Facebook', 'https://www.facebook.com/TorontoMotorsportsPark/'], ['Instagram — @tmpcayuga', 'https://www.instagram.com/tmpcayuga/'], ['YouTube', 'https://www.youtube.com/channel/UCr4EtAramV-s3RRrpXMQbMQ']]
+    },
+    grandbend: {
+      logo: '<img class="tlogo" src="logos/grand-bend.jpg" alt="">',
+      blurb: 'Organizer and club lapping days, Euro Klassik weekend lapping. A track in transition for 2027 — watch this space.',
+      address: '70292 Grand Bend Line, Grand Bend, ON N0M 1T0',
+      phones: [['519-238-7223', '+15192387223']],
+      email: 'pspriet@sprietinvestments.com',
+      web: ['grandbendmotorplex.com', 'https://grandbendmotorplex.com'],
+      socials: [['Facebook', 'https://www.facebook.com/grandbendmotorplex/'], ['Instagram — @grandbendmotorplex', 'https://www.instagram.com/grandbendmotorplex/']]
+    },
+    ctmp: {
+      logo: '<img class="tlogo" src="logos/ctmp.png" alt="">',
+      blurb: 'The DDT driver development track and the GP grand prix circuit share one venue — the contacts below cover both.',
+      address: '3233 Concession Road #10, Bowmanville, ON L1C 3K6',
+      phones: [['905-983-9141', '+19059839141'], ['1-800-866-1072', '+18008661072']],
+      email: 'info@ctmpark.com',
+      web: ['canadiantiremotorsportpark.com', 'https://canadiantiremotorsportpark.com'],
+      socials: [['Facebook', 'https://www.facebook.com/CanadianTireMotorsportPark/'], ['Instagram — @ctmpofficial', 'https://www.instagram.com/ctmpofficial/']]
+    },
+    shannonville: {
+      logo: '<span class="darkchip"><img src="logos/shannonville.png" alt=""></span>',
+      blurb: 'Motion Monday evenings, GT Race days, St. LAC evenings, Touge.ca. Four configurations — listings always name the layout.',
+      address: '7047 Old Highway 2, Shannonville, ON K0K 3A0',
+      phones: [['613-969-1906', '+16139691906']],
+      email: 'info@shannonville.com',
+      web: ['shannonville.com', 'https://shannonville.com'],
+      socials: [['Facebook', 'https://www.facebook.com/shannonvillemotorsportpark'], ['Instagram — @shannonvillemotorsportpark', 'https://www.instagram.com/shannonvillemotorsportpark']]
+    },
+    calabogie: {
+      logo: '<img class="tlogo" src="logos/calabogie.png" alt="">',
+      blurb: "Canada's longest track. Most lapping requires a prior sign-off to run solo; Track Nights and HPDE days run spring to fall.",
+      address: '462 Wilson Farm Road, Calabogie, ON K0J 1H0',
+      phones: [['613-752-1252', '+16137521252']],
+      email: 'info@calabogiemotorsports.com',
+      web: ['calabogiemotorsports.com', 'https://calabogiemotorsports.com'],
+      socials: [['Facebook', 'https://www.facebook.com/CalabogieMotorsportsPark'], ['Instagram — @calabogiemotorsportspark', 'https://www.instagram.com/calabogiemotorsportspark']]
+    }
+  };
+  function openTrack(key, etrack, title) {
+    var t = TRACK_INFO[key];
+    if (!t) return;
+    var phones = t.phones.map(function (p) { return '<a href="tel:' + p[1] + '">' + p[0] + '</a>'; }).join(' · ');
+    var socials = t.socials.map(function (s) { return '<a href="' + s[1] + '" target="_blank" rel="noopener">' + s[0] + '</a>'; }).join(' · ');
+    var directions = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(t.address);
+    document.getElementById('trackDetail').innerHTML =
+      '<div class="panel"><div class="thead">' + t.logo + '<h3 style="margin:0">' + esc(title) + '</h3></div>' +
+      '<p>' + esc(t.blurb) + '</p>' +
+      '<dl class="kv">' +
+      '<dt>Address</dt><dd>' + esc(t.address) + ' · <a href="' + directions + '" target="_blank" rel="noopener">Directions</a></dd>' +
+      '<dt>Phone</dt><dd>' + phones + '</dd>' +
+      '<dt>Email</dt><dd><a href="mailto:' + t.email + '">' + t.email + '</a></dd>' +
+      '<dt>Website</dt><dd><a href="' + t.web[1] + '" target="_blank" rel="noopener">' + t.web[0] + '</a></dd>' +
+      '<dt>Socials</dt><dd>' + socials + '</dd>' +
+      '</dl>' +
+      '<div class="btnrow"><button class="btn" id="trackEventsBtn">See events at this track</button></div></div>';
+    document.getElementById('trackEventsBtn').addEventListener('click', function () {
+      var has = Array.prototype.some.call(fTrack.options, function (o) { return o.value === etrack; });
+      fTrack.value = has ? etrack : '';
+      render();
+      showView('events');
+    });
+    showView('track');
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.track.clickable'), function (card) {
+    function go() { openTrack(card.getAttribute('data-tkey'), card.getAttribute('data-etrack'), card.querySelector('h4').textContent); }
+    card.addEventListener('click', go);
+    card.addEventListener('keydown', function (ev) { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); go(); } });
+  });
+  document.getElementById('trackBack').addEventListener('click', function () { showView('tracks'); });
 
   /* ---------- settings ---------- */
   var ALL_TRACKS = ['Toronto Motorsports Park — Cayuga', 'Grand Bend Motorplex', 'Canadian Tire Motorsport Park — DDT', 'Canadian Tire Motorsport Park — GP', 'Shannonville Motorsport Park', 'Calabogie Motorsports Park'];
