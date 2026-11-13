@@ -8,30 +8,29 @@
 <style>
   :root { --ink:#1c2430; --mut:#5a6572; --line:#d8dee6; --accent:#b3231b; --card:#ffffff; --bg:#f4f6f8; }
   * { box-sizing: border-box; }
+  [hidden] { display:none !important; }
   body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color:var(--ink); background:var(--bg); }
-  header { background:#141a22; color:#fff; padding:28px 16px 22px; }
+  header { background:#141a22; color:#fff; padding:20px 16px 18px; }
   .wrap { max-width: 980px; margin: 0 auto; }
   .brand { display:flex; align-items:center; gap:14px; }
-  .brand img { width:58px; height:58px; border-radius:14px; }
-  h1 { margin:0 0 6px; font-size: 30px; letter-spacing:.2px; }
+  .brand img { width:52px; height:52px; border-radius:13px; }
+  h1 { margin:0 0 4px; font-size: 28px; letter-spacing:.2px; }
   h1 .plus { color:#e2483d; }
-  .tag { margin:0; color:#c7d0da; font-size:15px; }
-  .links { margin-top:16px; display:flex; flex-wrap:wrap; gap:8px; }
-  .links a { color:#fff; border:1px solid #3a4656; border-radius:999px; padding:7px 13px; text-decoration:none; font-size:14px; }
-  .links a:hover { border-color:#e2483d; }
-  main { padding: 20px 16px 8px; }
+  .tag { margin:0; color:#c7d0da; font-size:14px; }
+  .menubtn { margin-left:auto; flex:none; background:#1f2937; color:#fff; border:1px solid #3a4656; border-radius:10px; padding:10px 14px; font-size:16px; cursor:pointer; }
+  .menubtn:hover { border-color:#e2483d; }
+  main { padding: 18px 16px 8px; }
   .notice { background:#fff7e6; border:1px solid #ecd9a0; border-radius:10px; padding:12px 14px; font-size:15px; }
   .notice.sample { background:#fdecea; border-color:#efb3ae; }
-  .filters { display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 6px; }
-  .filters select { padding:8px 10px; border:1px solid var(--line); border-radius:8px; font-size:14px; background:#fff; }
-  .filters label { font-size:14px; display:flex; align-items:center; gap:6px; padding:6px 4px; }
-  #count { color:var(--mut); font-size:14px; margin:6px 0 12px; }
+  #count, .subcount { color:var(--mut); font-size:14px; margin:6px 0 12px; }
   .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin:0 0 10px; }
   .card h3 { margin:0 0 4px; font-size:17px; }
   .meta { color:var(--mut); font-size:14px; margin:2px 0; }
   .cost { font-weight:600; }
   .card a { color:var(--accent); }
-  section.tracks { margin: 26px 0 6px; }
+  .actions { margin-top:8px; display:flex; gap:10px; align-items:center; }
+  .savebtn { background:#fff; border:1px solid var(--line); border-radius:999px; padding:6px 12px; font-size:14px; cursor:pointer; color:var(--ink); }
+  .savebtn.saved { border-color:var(--accent); color:var(--accent); font-weight:600; }
   .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:10px; }
   .track { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; }
   .track h4 { margin:0; font-size:15px; }
@@ -44,6 +43,27 @@
   .darkchip.sm { padding:3px 6px; border-radius:6px; margin-right:7px; }
   .darkchip.sm img { height:15px; }
   .track p { margin:0; color:var(--mut); font-size:14px; }
+  .panel { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px; margin:0 0 10px; font-size:15px; }
+  .panel p { margin:8px 0; }
+  .panel a { color:var(--accent); }
+  .checkgrid { display:grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap:4px 14px; margin:8px 0 4px; }
+  .checkgrid label, .stack label { display:flex; align-items:center; gap:8px; font-size:15px; padding:5px 0; }
+  .stack { display:grid; gap:2px; margin:8px 0 4px; }
+  .btn { background:var(--accent); color:#fff; border:none; border-radius:9px; padding:9px 15px; font-size:15px; cursor:pointer; }
+  .btn.ghost { background:#fff; color:var(--ink); border:1px solid var(--line); }
+  .btnrow { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+  #overlay { position:fixed; inset:0; background:rgba(10,14,20,.45); z-index:40; }
+  #drawer { position:fixed; top:0; right:0; height:100%; width:min(340px, 92vw); background:#fff; z-index:50; box-shadow:-6px 0 24px rgba(0,0,0,.25); padding:16px 18px 28px; overflow-y:auto; }
+  #drawer h2 { margin:0; font-size:19px; }
+  #drawer h3 { margin:20px 0 8px; font-size:14px; text-transform:uppercase; letter-spacing:.6px; color:var(--mut); }
+  .drawerhead { display:flex; align-items:center; }
+  .closebtn { margin-left:auto; background:#fff; border:1px solid var(--line); border-radius:9px; width:36px; height:36px; font-size:17px; cursor:pointer; }
+  .filters { display:grid; gap:8px; margin:4px 0; }
+  .filters select, .filters input[type="text"] { padding:9px 10px; border:1px solid var(--line); border-radius:8px; font-size:15px; background:#fff; width:100%; }
+  .filters label { font-size:15px; display:flex; align-items:center; gap:7px; padding:2px 0; }
+  .navlist { display:grid; gap:6px; }
+  .navlist button { text-align:left; background:#f4f6f8; border:1px solid var(--line); border-radius:9px; padding:11px 13px; font-size:16px; cursor:pointer; color:var(--ink); }
+  .navlist button:hover { border-color:var(--accent); }
   footer { border-top:1px solid var(--line); margin-top:28px; padding:16px; color:var(--mut); font-size:14px; }
   footer a { color:var(--accent); }
 </style>
@@ -55,31 +75,72 @@
       <img src="logo.png" alt="Ontario Track Days+ logo — a track outline with the letters OTD">
       <div>
         <h1>Ontario Track Days<span class="plus">+</span></h1>
-        <p class="tag">Every car track day in Ontario, in one place — HPDE, open lapping, driver schools, Time Attack (OTA &amp; CSCS), special events with open lapping, and winter lapping. Free, no account, details straight from the organizers.</p>
+        <p class="tag">Car track days in Ontario, in one place — HPDE, open lapping, driver schools, Time Attack (OTA &amp; CSCS), special events with open lapping, and winter lapping. Free, no account, details straight from the organizers.</p>
       </div>
+      <button class="menubtn" id="menuOpen" aria-haspopup="true" aria-controls="drawer">☰ Menu</button>
     </div>
-    <nav class="links">
-      <a href="https://docs.google.com/spreadsheets/d/1E3V78O6qYAWK9xRD9XsDwDtrm19LgKwgrkD-NqzuGLU/edit" target="_blank" rel="noopener">Prefer a spreadsheet? View the full list</a>
-      <a href="https://calendar.google.com/calendar/ical/14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8@group.calendar.google.com/public/basic.ics">Subscribe to the calendar (ICS)</a>
-      <a href="https://ko-fi.com/ontariotrackdays" target="_blank" rel="noopener">Buy me a lug nut — support on Ko-fi</a>
-    </nav>
   </div>
 </header>
+
+<div id="overlay" hidden></div>
+<aside id="drawer" hidden aria-label="Site menu">
+  <div class="drawerhead">
+    <h2>Menu</h2>
+    <button class="closebtn" id="menuClose" aria-label="Close menu">✕</button>
+  </div>
+
+  <h3>Search &amp; filter</h3>
+  <div class="filters">
+    <input type="text" id="fSearch" placeholder="Search title, host, track…" aria-label="Search listings">
+    <select id="fTrack" aria-label="Filter by track"><option value="">All tracks</option></select>
+    <select id="fCat" aria-label="Filter by category"><option value="">All categories</option></select>
+    <select id="fMonth" aria-label="Filter by month"><option value="">All months</option></select>
+    <label><input type="checkbox" id="fNovice"> Novice welcome</label>
+  </div>
+  <div class="btnrow">
+    <button class="btn" id="applyFilters">Show matching events</button>
+    <button class="btn ghost" id="clearFilters">Clear</button>
+  </div>
+
+  <h3>Go to</h3>
+  <nav class="navlist">
+    <button data-view="events">Find events</button>
+    <button data-view="saved">Saved events <span id="savedCount"></span></button>
+    <button data-view="tracks">The tracks</button>
+    <button data-view="about">About us</button>
+    <button data-view="settings">Settings</button>
+  </nav>
+
+  <h3>More ways to follow</h3>
+  <div class="navlist">
+    <button id="drawerSheet">Full list (spreadsheet)</button>
+    <button id="drawerIcs">Subscribe to the calendar (ICS)</button>
+    <button id="drawerKofi">Support on Ko-fi — buy a lug nut</button>
+  </div>
+
+  <h3>Help</h3>
+  <div class="navlist">
+    <button id="drawerBug">Report a bug</button>
+    <button id="drawerFeature">Request a feature</button>
+  </div>
+</aside>
+
 <main>
   <div class="wrap">
-    <p class="notice"><strong>Building for the 2027 season.</strong> Listings land as organizers publish their 2027 calendars (most appear January–March). Winter lapping dates at TMP may show up sooner — check back, or subscribe to the calendar above.</p>
-    <p class="notice sample" id="sampleBanner" hidden><strong>Sample preview only.</strong> The listings below are dummy entries built from 2026 season patterns so the layout can be checked — they are <strong>not</strong> real 2027 announcements, the prices are samples, and the Register buttons are dummies.</p>
+    <section id="view-events">
+      <p class="notice"><strong>Building for the 2027 season.</strong> Listings land as organizers publish their 2027 calendars (most appear January–March). Winter lapping dates at TMP may show up sooner — check back, or subscribe to the calendar from the menu.</p>
+      <p class="notice sample" id="sampleBanner" hidden><strong>Sample preview only.</strong> The listings below are dummy entries built from 2026 season patterns so the layout can be checked — they are <strong>not</strong> real 2027 announcements, the prices are samples, and the Register buttons are dummies.</p>
+      <p id="count"></p>
+      <div id="list"></div>
+    </section>
 
-    <div class="filters">
-      <select id="fTrack" aria-label="Filter by track"><option value="">All tracks</option></select>
-      <select id="fCat" aria-label="Filter by category"><option value="">All categories</option></select>
-      <select id="fMonth" aria-label="Filter by month"><option value="">All months</option></select>
-      <label><input type="checkbox" id="fNovice"> Novice welcome</label>
-    </div>
-    <p id="count"></p>
-    <div id="list"></div>
+    <section id="view-saved" hidden>
+      <h2>Saved events</h2>
+      <p class="subcount" id="savedIntro">Saved listings live in this browser on this device — no account needed. Tap ☆ Save on any listing to add it here.</p>
+      <div id="savedList"></div>
+    </section>
 
-    <section class="tracks">
+    <section id="view-tracks" hidden>
       <h2>The tracks</h2>
       <div class="grid">
         <div class="track"><div class="thead"><img class="tlogo round" src="logos/tmp.jpg" alt="Toronto Motorsports Park logo"><h4>Toronto Motorsports Park — Cayuga</h4></div><p>House open car lapping (cash at the gate), Pinnacle/PADA, Touge.ca, special events like Bimmerfest Canada, and winter lapping.</p></div>
@@ -90,14 +151,52 @@
         <div class="track"><div class="thead"><img class="tlogo" src="logos/calabogie.png" alt="Calabogie Motorsports Park logo"><h4>Calabogie Motorsports Park</h4></div><p>Canada's longest track. Most lapping requires a prior sign-off to run solo; Track Nights and HPDE days run spring to fall.</p></div>
       </div>
     </section>
+
+    <section id="view-about" hidden>
+      <h2>About us</h2>
+      <div class="panel">
+        <p><strong>Ontario Track Days+</strong> is a free community calendar of car track days across Ontario — HPDE, open lapping, driver schools, Time Attack from Ontario Time Attack and CSCS, special events that include public open lapping, and winter lapping. It's curated by Paul Murray and modelled on Ontario Vendor Events: one place to check dates, times, costs and registration links instead of chasing Facebook groups and organizer sites.</p>
+        <p>Listings are taken from organizer-published sources only, and each one shows when it was last verified. Nothing here is paywalled and there are no accounts — your saved events and settings stay in your own browser.</p>
+        <p>Tracks covered: Toronto Motorsports Park (Cayuga), Grand Bend Motorplex, Canadian Tire Motorsport Park (DDT and GP), Shannonville Motorsport Park, and Calabogie Motorsports Park. Cars only — no motorcycle days, no autocross, no CASC test days.</p>
+        <p><a href="https://docs.google.com/spreadsheets/d/1E3V78O6qYAWK9xRD9XsDwDtrm19LgKwgrkD-NqzuGLU/edit" target="_blank" rel="noopener">Prefer a spreadsheet? View the full list</a> · <a href="https://calendar.google.com/calendar/ical/14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8@group.calendar.google.com/public/basic.ics">Subscribe to the calendar (ICS)</a> · <a href="https://ko-fi.com/ontariotrackdays" target="_blank" rel="noopener">Support the project on Ko-fi — buy a lug nut ($5)</a></p>
+        <p>Track logos belong to their respective tracks and are shown only to identify each venue.</p>
+        <p>Something broken, or an idea that would make this more useful? <a href="mailto:ontariotrackdays@gmail.com?subject=Ontario%20Track%20Days%2B%20%E2%80%94%20Bug%20report&amp;body=What%20happened%3A%0A%0AWhat%20I%20expected%3A%0A">Report a bug</a> · <a href="mailto:ontariotrackdays@gmail.com?subject=Ontario%20Track%20Days%2B%20%E2%80%94%20Feature%20request&amp;body=My%20idea%3A%0A%0AWhy%20it%20would%20help%3A%0A">Request a feature</a> — both go to ontariotrackdays@gmail.com.</p>
+      </div>
+    </section>
+
+    <section id="view-settings" hidden>
+      <h2>Settings</h2>
+      <div class="panel">
+        <p><strong>Your saves and settings live only in this browser</strong> — no account, nothing leaves your device. (On this sample preview they are stored separately from the real page.)</p>
+        <h3>Tracks I follow</h3>
+        <div class="checkgrid" id="setTracks"></div>
+        <h3>Categories I follow</h3>
+        <div class="checkgrid" id="setCats"></div>
+        <h3>Alerts</h3>
+        <div class="stack">
+          <label><input type="checkbox" id="setNew"> Tell me about new listings that match my follows</label>
+          <label><input type="checkbox" id="setRemind7"> Remind me 7 days before a saved event</label>
+          <label><input type="checkbox" id="setRemind1"> Remind me the day before a saved event</label>
+        </div>
+        <div class="btnrow">
+          <button class="btn" id="notifBtn">Enable browser notifications</button>
+        </div>
+        <p id="notifStatus" class="meta"></p>
+        <p>How web notifications work here: this page checks for new matches and due reminders <strong>when you open it</strong>, and shows a browser notification then if you've enabled them. A static web page can't run in the background — for alerts that arrive on their own (a morning digest of new dates, instant cancellation notices), the Android app is the way, and it's in the plan. Meanwhile, <a href="https://calendar.google.com/calendar/ical/14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8@group.calendar.google.com/public/basic.ics">subscribing to the calendar feed</a> lets your own calendar app remind you about any event you add from it.</p>
+        <h3>Your data</h3>
+        <div class="btnrow">
+          <button class="btn ghost" id="clearData">Clear saved events &amp; settings</button>
+        </div>
+      </div>
+    </section>
   </div>
 </main>
 <footer>
   <div class="wrap">
-    <p>Ontario Track Days+ is a free community resource curated by Paul Murray. Every listing is taken from organizer-published sources and shows its last-verified date. Spotted an error? Contact details arrive with the full launch.</p>
+    <p>Ontario Track Days+ is a free community resource curated by Paul Murray. Listings are taken from organizer-published sources and show a last-verified date. Spotted an error? Contact details arrive with the full launch.</p>
     <p>Track logos belong to their respective tracks and are shown only to identify each venue.</p>
     <p><a href="https://docs.google.com/spreadsheets/d/1E3V78O6qYAWK9xRD9XsDwDtrm19LgKwgrkD-NqzuGLU/edit" target="_blank" rel="noopener">Full list (spreadsheet)</a> · <a href="https://calendar.google.com/calendar/ical/14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8@group.calendar.google.com/public/basic.ics">Calendar feed (ICS)</a></p>
-    <p>v3</p>
+    <p>v4</p>
   </div>
 </footer>
 <script src="events.js"></script>
@@ -110,45 +209,213 @@
     document.getElementById('sampleBanner').hidden = false;
     document.title = 'SAMPLE PREVIEW — ' + document.title;
   }
+
+  /* ---------- storage (browser-only, no account) ---------- */
+  var NS = sampleMode ? 'otd_sample_' : 'otd_';
+  function load(key, fallback) { try { var v = localStorage.getItem(NS + key); return v ? JSON.parse(v) : fallback; } catch (e) { return fallback; } }
+  function store(key, val) { try { localStorage.setItem(NS + key, JSON.stringify(val)); } catch (e) {} }
+  var saved = load('saved_v1', []);              // array of event keys
+  var settings = load('settings_v1', { tracks: [], cats: [], alertsNew: false, remind7: true, remind1: true });
+  function keyOf(e) { return [e.date, e.track, e.title].join('|'); }
+  function isSaved(e) { return saved.indexOf(keyOf(e)) > -1; }
+
+  /* ---------- drawer + views ---------- */
+  var overlay = document.getElementById('overlay'), drawer = document.getElementById('drawer');
+  function openMenu() { overlay.hidden = false; drawer.hidden = false; }
+  function closeMenu() { overlay.hidden = true; drawer.hidden = true; }
+  document.getElementById('menuOpen').addEventListener('click', openMenu);
+  document.getElementById('menuClose').addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') closeMenu(); });
+  var viewNames = ['events', 'saved', 'tracks', 'about', 'settings'];
+  function showView(name) {
+    viewNames.forEach(function (v) { document.getElementById('view-' + v).hidden = v !== name; });
+    closeMenu();
+    window.scrollTo(0, 0);
+  }
+  Array.prototype.forEach.call(drawer.querySelectorAll('[data-view]'), function (b) {
+    b.addEventListener('click', function () { showView(b.getAttribute('data-view')); });
+  });
+  document.getElementById('drawerSheet').addEventListener('click', function () { window.open('https://docs.google.com/spreadsheets/d/1E3V78O6qYAWK9xRD9XsDwDtrm19LgKwgrkD-NqzuGLU/edit', '_blank'); });
+  document.getElementById('drawerIcs').addEventListener('click', function () { location.href = 'https://calendar.google.com/calendar/ical/14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8@group.calendar.google.com/public/basic.ics'; });
+  document.getElementById('drawerKofi').addEventListener('click', function () { window.open('https://ko-fi.com/ontariotrackdays', '_blank'); });
+  document.getElementById('drawerBug').addEventListener('click', function () {
+    location.href = 'mailto:ontariotrackdays@gmail.com?subject=' + encodeURIComponent('Ontario Track Days+ — Bug report') +
+      '&body=' + encodeURIComponent('What happened:\n\nWhat I expected:\n\nPage: ' + location.href);
+  });
+  document.getElementById('drawerFeature').addEventListener('click', function () {
+    location.href = 'mailto:ontariotrackdays@gmail.com?subject=' + encodeURIComponent('Ontario Track Days+ — Feature request') +
+      '&body=' + encodeURIComponent('My idea:\n\nWhy it would help:\n\nPage: ' + location.href);
+  });
+
+  /* ---------- filters ---------- */
   var listEl = document.getElementById('list'), countEl = document.getElementById('count');
-  var fTrack = document.getElementById('fTrack'), fCat = document.getElementById('fCat'),
-      fMonth = document.getElementById('fMonth'), fNovice = document.getElementById('fNovice');
+  var fSearch = document.getElementById('fSearch'), fTrack = document.getElementById('fTrack'),
+      fCat = document.getElementById('fCat'), fMonth = document.getElementById('fMonth'),
+      fNovice = document.getElementById('fNovice');
   function fill(sel, vals) { vals.forEach(function (v) { var o = document.createElement('option'); o.value = v; o.textContent = v; sel.appendChild(o); }); }
   fill(fTrack, Array.from(new Set(events.map(function (e) { return e.track; }))).sort());
   fill(fCat, Array.from(new Set(events.map(function (e) { return e.category; }))).sort());
   fill(fMonth, Array.from(new Set(events.map(function (e) { return e.date.slice(0, 7); }))).sort());
-  function render() {
-    var rows = events.filter(function (e) {
-      return (!fTrack.value || e.track === fTrack.value) &&
-             (!fCat.value || e.category === fCat.value) &&
-             (!fMonth.value || e.date.slice(0, 7) === fMonth.value) &&
-             (!fNovice.checked || e.novice === true);
+  function filtersActive() { return !!(fSearch.value || fTrack.value || fCat.value || fMonth.value || fNovice.checked); }
+  function matches(e) {
+    var q = fSearch.value.trim().toLowerCase();
+    var hay = (e.title + ' ' + e.track + ' ' + e.host + ' ' + e.category + ' ' + (e.notes || '')).toLowerCase();
+    return (!q || hay.indexOf(q) > -1) &&
+           (!fTrack.value || e.track === fTrack.value) &&
+           (!fCat.value || e.category === fCat.value) &&
+           (!fMonth.value || e.date.slice(0, 7) === fMonth.value) &&
+           (!fNovice.checked || e.novice === true);
+  }
+
+  /* ---------- cards ---------- */
+  function logoFor(t) {
+    t = t || '';
+    if (t.indexOf('Toronto Motorsports') > -1) return '<img class="elogo" src="logos/tmp.jpg" alt="">';
+    if (t.indexOf('Grand Bend') > -1) return '<img class="elogo" src="logos/grand-bend.jpg" alt="">';
+    if (t.indexOf('Canadian Tire') > -1) return '<img class="elogo" src="logos/ctmp.png" alt="">';
+    if (t.indexOf('Shannonville') > -1) return '<span class="darkchip sm"><img src="logos/shannonville.png" alt=""></span>';
+    if (t.indexOf('Calabogie') > -1) return '<img class="elogo" src="logos/calabogie.png" alt="">';
+    return '';
+  }
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  function cardHTML(e) {
+    var lines = ['<div class="card"><h3>' + logoFor(e.track) + esc(e.title) + '</h3>',
+      '<p class="meta">' + esc(e.dateLabel) + ' · ' + esc(e.track) + (e.configuration ? ' — ' + esc(e.configuration) : '') + '</p>',
+      '<p class="meta">' + esc(e.category) + ' · Host: ' + esc(e.host) + (e.times ? ' · ' + esc(e.times) : '') + '</p>'];
+    if (e.cost) lines.push('<p class="meta cost">' + esc(e.cost) + '</p>');
+    if (e.notes) lines.push('<p class="meta">' + esc(e.notes) + '</p>');
+    var act = '<div class="actions">';
+    if (e.register) act += '<a href="' + e.register + '" target="_blank" rel="noopener">Register</a>';
+    act += '<button class="savebtn' + (isSaved(e) ? ' saved' : '') + '" data-key="' + esc(keyOf(e)) + '">' + (isSaved(e) ? '★ Saved' : '☆ Save') + '</button></div>';
+    lines.push(act);
+    lines.push('</div>');
+    return lines.join('');
+  }
+  function wireSaveButtons(container) {
+    Array.prototype.forEach.call(container.querySelectorAll('.savebtn'), function (b) {
+      b.addEventListener('click', function () {
+        var k = b.getAttribute('data-key'), i = saved.indexOf(k);
+        if (i > -1) saved.splice(i, 1); else saved.push(k);
+        store('saved_v1', saved);
+        render();
+      });
     });
+  }
+  function render() {
+    var rows = events.filter(matches);
     countEl.textContent = rows.length
-      ? (sampleMode ? rows.length + ' sample listing' + (rows.length === 1 ? '' : 's') + ' (preview only)' : rows.length + ' upcoming event' + (rows.length === 1 ? '' : 's'))
-      : (sampleMode ? 'No sample listings match those filters.' : 'No listings yet — 2027 calendars publish January to March.');
-    function logoFor(t) {
-      t = t || '';
-      if (t.indexOf('Toronto Motorsports') > -1) return '<img class="elogo" src="logos/tmp.jpg" alt="">';
-      if (t.indexOf('Grand Bend') > -1) return '<img class="elogo" src="logos/grand-bend.jpg" alt="">';
-      if (t.indexOf('Canadian Tire') > -1) return '<img class="elogo" src="logos/ctmp.png" alt="">';
-      if (t.indexOf('Shannonville') > -1) return '<span class="darkchip sm"><img src="logos/shannonville.png" alt=""></span>';
-      if (t.indexOf('Calabogie') > -1) return '<img class="elogo" src="logos/calabogie.png" alt="">';
-      return '';
-    }
-    listEl.innerHTML = rows.map(function (e) {
-      var lines = ['<div class="card"><h3>' + logoFor(e.track) + e.title + '</h3>',
-        '<p class="meta">' + e.dateLabel + ' · ' + e.track + (e.configuration ? ' — ' + e.configuration : '') + '</p>',
-        '<p class="meta">' + e.category + ' · Host: ' + e.host + (e.times ? ' · ' + e.times : '') + '</p>'];
-      if (e.cost) lines.push('<p class="meta cost">' + e.cost + '</p>');
-      if (e.notes) lines.push('<p class="meta">' + e.notes + '</p>');
-      if (e.register) lines.push('<p class="meta"><a href="' + e.register + '" target="_blank" rel="noopener">Register</a></p>');
-      lines.push('</div>');
-      return lines.join('');
-    }).join('');
+      ? (sampleMode ? rows.length + ' sample listing' + (rows.length === 1 ? '' : 's') + ' (preview only)' : rows.length + ' upcoming event' + (rows.length === 1 ? '' : 's')) + (filtersActive() ? ' — filters on (Menu to change)' : '')
+      : (sampleMode ? 'No sample listings match those filters.' : (filtersActive() ? 'No listings match those filters.' : 'No listings yet — 2027 calendars publish January to March.'));
+    listEl.innerHTML = rows.map(cardHTML).join('');
+    wireSaveButtons(listEl);
+    var savedRows = events.filter(isSaved);
+    document.getElementById('savedCount').textContent = saved.length ? '(' + saved.length + ')' : '';
+    document.getElementById('savedList').innerHTML = savedRows.length
+      ? savedRows.map(cardHTML).join('')
+      : '<p class="subcount">Nothing saved yet — tap ☆ Save on any listing and it will wait for you here.</p>';
+    wireSaveButtons(document.getElementById('savedList'));
   }
   [fTrack, fCat, fMonth, fNovice].forEach(function (el) { el.addEventListener('change', render); });
+  fSearch.addEventListener('input', render);
+  document.getElementById('applyFilters').addEventListener('click', function () { showView('events'); });
+  document.getElementById('clearFilters').addEventListener('click', function () {
+    fSearch.value = ''; fTrack.value = ''; fCat.value = ''; fMonth.value = ''; fNovice.checked = false; render();
+  });
+
+  /* ---------- settings ---------- */
+  var ALL_TRACKS = ['Toronto Motorsports Park — Cayuga', 'Grand Bend Motorplex', 'Canadian Tire Motorsport Park — DDT', 'Canadian Tire Motorsport Park — GP', 'Shannonville Motorsport Park', 'Calabogie Motorsports Park'];
+  var ALL_CATS = ['HPDE', 'Lapping', 'School', 'Time Attack', 'Special Event — Lapping', 'Winter Lapping'];
+  function buildChecks(containerId, values, chosen, onChange) {
+    var c = document.getElementById(containerId);
+    values.forEach(function (v) {
+      var lab = document.createElement('label');
+      var cb = document.createElement('input');
+      cb.type = 'checkbox'; cb.value = v; cb.checked = chosen.indexOf(v) > -1;
+      cb.addEventListener('change', function () {
+        var arr = Array.prototype.map.call(c.querySelectorAll('input:checked'), function (i) { return i.value; });
+        onChange(arr);
+      });
+      lab.appendChild(cb);
+      lab.appendChild(document.createTextNode(' ' + v));
+      c.appendChild(lab);
+    });
+  }
+  buildChecks('setTracks', ALL_TRACKS, settings.tracks, function (arr) { settings.tracks = arr; store('settings_v1', settings); });
+  buildChecks('setCats', ALL_CATS, settings.cats, function (arr) { settings.cats = arr; store('settings_v1', settings); });
+  function bindToggle(id, field) {
+    var el = document.getElementById(id);
+    el.checked = !!settings[field];
+    el.addEventListener('change', function () { settings[field] = el.checked; store('settings_v1', settings); });
+  }
+  bindToggle('setNew', 'alertsNew');
+  bindToggle('setRemind7', 'remind7');
+  bindToggle('setRemind1', 'remind1');
+  document.getElementById('clearData').addEventListener('click', function () {
+    saved = []; settings = { tracks: [], cats: [], alertsNew: false, remind7: true, remind1: true };
+    store('saved_v1', saved); store('settings_v1', settings); store('seen_v1', null); store('notified_v1', {});
+    location.reload();
+  });
+
+  /* ---------- notifications (checked when the page opens) ---------- */
+  var notifStatus = document.getElementById('notifStatus');
+  function notifSupported() { return 'Notification' in window; }
+  function refreshNotifStatus() {
+    if (!notifSupported()) { notifStatus.textContent = 'This browser does not support notifications — the calendar subscription above is the reliable route.'; return; }
+    notifStatus.textContent = Notification.permission === 'granted'
+      ? 'Browser notifications are ON for this page on this device.'
+      : Notification.permission === 'denied'
+        ? 'Browser notifications are blocked for this site — allow them in your browser site settings to use alerts here.'
+        : 'Browser notifications are not enabled yet.';
+  }
+  document.getElementById('notifBtn').addEventListener('click', function () {
+    if (!notifSupported()) { refreshNotifStatus(); return; }
+    Notification.requestPermission().then(function (p) {
+      refreshNotifStatus();
+      if (p === 'granted') {
+        new Notification('Ontario Track Days+', { body: 'Notifications are on for this browser. New matches and saved-event reminders will appear when you open the page.' });
+        runAlertChecks();
+      }
+    });
+  });
+  function followsMatch(e) {
+    return (!settings.tracks.length || settings.tracks.indexOf(e.track) > -1) &&
+           (!settings.cats.length || settings.cats.indexOf(e.category) > -1);
+  }
+  function daysUntil(dateStr) {
+    var p = dateStr.split('-'), d = new Date(+p[0], +p[1] - 1, +p[2]);
+    var now = new Date(); now.setHours(0, 0, 0, 0);
+    return Math.round((d - now) / 86400000);
+  }
+  function runAlertChecks() {
+    if (!notifSupported() || Notification.permission !== 'granted') return;
+    if (settings.alertsNew) {
+      var matching = events.filter(followsMatch).map(keyOf);
+      var seen = load('seen_v1', null);
+      if (seen) {
+        var fresh = matching.filter(function (k) { return seen.indexOf(k) === -1; });
+        if (fresh.length) new Notification('Ontario Track Days+', { body: fresh.length + ' new listing' + (fresh.length === 1 ? '' : 's') + ' matching your follows since your last visit.' });
+      }
+      store('seen_v1', matching);
+    }
+    var notified = load('notified_v1', {});
+    events.filter(isSaved).forEach(function (e) {
+      var du = daysUntil(e.date), k = keyOf(e);
+      if (settings.remind7 && du === 7 && !notified[k + '@7']) {
+        new Notification('One week to go', { body: e.title + ' — ' + e.dateLabel + ' · ' + e.track });
+        notified[k + '@7'] = 1;
+      }
+      if (settings.remind1 && du === 1 && !notified[k + '@1']) {
+        new Notification('Tomorrow at the track', { body: e.title + ' — ' + e.dateLabel + ' · ' + e.track });
+        notified[k + '@1'] = 1;
+      }
+    });
+    store('notified_v1', notified);
+  }
+
+  refreshNotifStatus();
   render();
+  runAlertChecks();
 })();
 </script>
 </body>
