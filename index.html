@@ -16,9 +16,10 @@
   .brand img { width:52px; height:52px; border-radius:13px; display:block; }
   .logobtn { background:none; border:none; padding:0; cursor:pointer; flex:none; border-radius:13px; }
   .logobtn:focus-visible { outline:2px solid #e2483d; outline-offset:2px; }
-  h1 { margin:0 0 4px; font-size: 28px; letter-spacing:.2px; }
+  h1 { margin:10px 0 2px; font-size: 30px; letter-spacing:.2px; }
   h1 .plus { color:#e2483d; }
-  .tag { margin:0; color:#c7d0da; font-size:14px; }
+  .tagbar { background:#fff; border-bottom:1px solid var(--line); padding:12px 16px; }
+  .tag { margin:0; color:#3c4754; font-size:15px; }
   .menubtn { margin-left:auto; flex:none; background:#1f2937; color:#fff; border:1px solid #3a4656; border-radius:10px; padding:10px 14px; font-size:16px; cursor:pointer; }
   .menubtn:hover { border-color:#e2483d; }
   main { padding: 18px 16px 8px; }
@@ -93,14 +94,16 @@
   <div class="wrap">
     <div class="brand">
       <button class="logobtn" id="logoHome" aria-label="Ontario Track Days+ — back to the main page"><img src="logo.png" alt="Ontario Track Days+ logo — a track outline with the letters OTD"></button>
-      <div>
-        <h1>Ontario Track Days<span class="plus">+</span></h1>
-        <p class="tag">Car track days in Ontario, in one place — HPDE, open lapping, driver schools, Time Attack (OTA &amp; CSCS), special events with open lapping, and winter lapping. Free, no account, details straight from the organizers.</p>
-      </div>
       <button class="menubtn" id="menuOpen" aria-haspopup="true" aria-controls="drawer">☰ Menu</button>
     </div>
+    <h1>Ontario Track Days<span class="plus">+</span></h1>
   </div>
 </header>
+<div class="tagbar">
+  <div class="wrap">
+    <p class="tag">Car track days in Ontario, in one place — HPDE, open lapping, driver schools, Time Attack (OTA &amp; CSCS), special events with open lapping, and winter lapping. Free, no account, details straight from the organizers.</p>
+  </div>
+</div>
 
 <div id="overlay" hidden></div>
 <aside id="drawer" hidden aria-label="Site menu">
@@ -217,7 +220,7 @@
     <p>Ontario Track Days+ is a free community resource curated by Paul Murray. Listings are taken from organizer-published sources and show a last-verified date. Spotted an error? Email <a href="mailto:ontariotrackdays@gmail.com">ontariotrackdays@gmail.com</a>.</p>
     <p>Track logos belong to their respective tracks and are shown only to identify each venue.</p>
     <p><a href="https://docs.google.com/spreadsheets/d/1E3V78O6qYAWK9xRD9XsDwDtrm19LgKwgrkD-NqzuGLU/edit" target="_blank" rel="noopener">Full list (spreadsheet)</a> · <a href="https://calendar.google.com/calendar/ical/14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8@group.calendar.google.com/public/basic.ics">Calendar feed (ICS)</a></p>
-    <p>v9</p>
+    <p>v10</p>
   </div>
 </footer>
 <script src="events.js"></script>
