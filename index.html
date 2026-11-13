@@ -33,7 +33,15 @@
   section.tracks { margin: 26px 0 6px; }
   .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:10px; }
   .track { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; }
-  .track h4 { margin:0 0 4px; font-size:15px; }
+  .track h4 { margin:0; font-size:15px; }
+  .thead { display:flex; align-items:center; gap:10px; margin-bottom:5px; }
+  .tlogo { height:34px; width:auto; max-width:140px; object-fit:contain; flex:none; }
+  .tlogo.round { height:38px; border-radius:50%; }
+  .darkchip { background:#141a22; border-radius:8px; padding:5px 9px; display:inline-flex; align-items:center; flex:none; }
+  .darkchip img { height:24px; width:auto; max-width:130px; display:block; }
+  .elogo { height:20px; width:auto; max-width:90px; object-fit:contain; vertical-align:-4px; margin-right:7px; }
+  .darkchip.sm { padding:3px 6px; border-radius:6px; margin-right:7px; }
+  .darkchip.sm img { height:15px; }
   .track p { margin:0; color:var(--mut); font-size:14px; }
   footer { border-top:1px solid var(--line); margin-top:28px; padding:16px; color:var(--mut); font-size:14px; }
   footer a { color:var(--accent); }
@@ -72,12 +80,12 @@
     <section class="tracks">
       <h2>The tracks</h2>
       <div class="grid">
-        <div class="track"><h4>Toronto Motorsports Park — Cayuga</h4><p>House open car lapping (cash at the gate), Pinnacle/PADA, Touge.ca, special events like Bimmerfest Canada, and winter lapping.</p></div>
-        <div class="track"><h4>Grand Bend Motorplex</h4><p>Organizer and club lapping days, Euro Klassik weekend lapping. A track in transition for 2027 — watch this space.</p></div>
-        <div class="track"><h4>Canadian Tire Motorsport Park — DDT</h4><p>Driver development track: Touge.ca, Motori, OTA school, club days. Configurations vary by event — each listing names the one in use.</p></div>
-        <div class="track"><h4>Canadian Tire Motorsport Park — GP</h4><p>The big track: DriveTeq, Trillium BMW, PCA UCR, OTA, Infinite Motorsports. Mostly intermediate/advanced.</p></div>
-        <div class="track"><h4>Shannonville Motorsport Park</h4><p>Motion Monday evenings, GT Race days, St. LAC evenings, Touge.ca. Four configurations — the listing always names the layout.</p></div>
-        <div class="track"><h4>Calabogie Motorsports Park</h4><p>Canada's longest track. Most lapping requires a prior sign-off to run solo; Track Nights and HPDE days run spring to fall.</p></div>
+        <div class="track"><div class="thead"><img class="tlogo round" src="logos/tmp.jpg" alt="Toronto Motorsports Park logo"><h4>Toronto Motorsports Park — Cayuga</h4></div><p>House open car lapping (cash at the gate), Pinnacle/PADA, Touge.ca, special events like Bimmerfest Canada, and winter lapping.</p></div>
+        <div class="track"><div class="thead"><img class="tlogo" src="logos/grand-bend.jpg" alt="Grand Bend Motorplex logo"><h4>Grand Bend Motorplex</h4></div><p>Organizer and club lapping days, Euro Klassik weekend lapping. A track in transition for 2027 — watch this space.</p></div>
+        <div class="track"><div class="thead"><img class="tlogo" src="logos/ctmp.png" alt="Canadian Tire Motorsport Park logo"><h4>Canadian Tire Motorsport Park — DDT</h4></div><p>Driver development track: Touge.ca, Motori, OTA school, club days. Configurations vary by event — each listing names the one in use.</p></div>
+        <div class="track"><div class="thead"><img class="tlogo" src="logos/ctmp.png" alt="Canadian Tire Motorsport Park logo"><h4>Canadian Tire Motorsport Park — GP</h4></div><p>The big track: DriveTeq, Trillium BMW, PCA UCR, OTA, Infinite Motorsports. Mostly intermediate/advanced.</p></div>
+        <div class="track"><div class="thead"><span class="darkchip"><img src="logos/shannonville.png" alt="Shannonville Motorsport Park logo"></span><h4>Shannonville Motorsport Park</h4></div><p>Motion Monday evenings, GT Race days, St. LAC evenings, Touge.ca. Four configurations — the listing always names the layout.</p></div>
+        <div class="track"><div class="thead"><img class="tlogo" src="logos/calabogie.png" alt="Calabogie Motorsports Park logo"><h4>Calabogie Motorsports Park</h4></div><p>Canada's longest track. Most lapping requires a prior sign-off to run solo; Track Nights and HPDE days run spring to fall.</p></div>
       </div>
     </section>
   </div>
@@ -85,8 +93,9 @@
 <footer>
   <div class="wrap">
     <p>Ontario Track Days+ is a free community resource curated by Paul Murray. Every listing is taken from organizer-published sources and shows its last-verified date. Spotted an error? Contact details arrive with the full launch.</p>
+    <p>Track logos belong to their respective tracks and are shown only to identify each venue.</p>
     <p><a href="https://docs.google.com/spreadsheets/d/1E3V78O6qYAWK9xRD9XsDwDtrm19LgKwgrkD-NqzuGLU/edit" target="_blank" rel="noopener">Full list (spreadsheet)</a> · <a href="https://calendar.google.com/calendar/ical/14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8@group.calendar.google.com/public/basic.ics">Calendar feed (ICS)</a></p>
-    <p>v1</p>
+    <p>v2</p>
   </div>
 </footer>
 <script src="events.js"></script>
@@ -108,8 +117,17 @@
              (!fNovice.checked || e.novice === true);
     });
     countEl.textContent = rows.length ? rows.length + ' upcoming event' + (rows.length === 1 ? '' : 's') : 'No listings yet — 2027 calendars publish January to March.';
+    function logoFor(t) {
+      t = t || '';
+      if (t.indexOf('Toronto Motorsports') > -1) return '<img class="elogo" src="logos/tmp.jpg" alt="">';
+      if (t.indexOf('Grand Bend') > -1) return '<img class="elogo" src="logos/grand-bend.jpg" alt="">';
+      if (t.indexOf('Canadian Tire') > -1) return '<img class="elogo" src="logos/ctmp.png" alt="">';
+      if (t.indexOf('Shannonville') > -1) return '<span class="darkchip sm"><img src="logos/shannonville.png" alt=""></span>';
+      if (t.indexOf('Calabogie') > -1) return '<img class="elogo" src="logos/calabogie.png" alt="">';
+      return '';
+    }
     listEl.innerHTML = rows.map(function (e) {
-      var lines = ['<div class="card"><h3>' + e.title + '</h3>',
+      var lines = ['<div class="card"><h3>' + logoFor(e.track) + e.title + '</h3>',
         '<p class="meta">' + e.dateLabel + ' · ' + e.track + (e.configuration ? ' — ' + e.configuration : '') + '</p>',
         '<p class="meta">' + e.category + ' · Host: ' + e.host + (e.times ? ' · ' + e.times : '') + '</p>'];
       if (e.cost) lines.push('<p class="meta cost">' + e.cost + '</p>');
