@@ -139,6 +139,7 @@
   <h3>More ways to follow</h3>
   <div class="navlist">
     <button id="drawerSheet">Full list (spreadsheet)</button>
+    <button id="drawerCalView">View the calendar (read-only)</button>
     <button id="drawerIcs">Subscribe to the calendar (ICS)</button>
     <button id="drawerKofi">Support on Ko-fi — buy a lug nut</button>
   </div>
@@ -213,7 +214,7 @@
         <p><strong>Ontario Track Days+</strong> is a free community calendar of car track days across Ontario — HPDE, open lapping, driver schools, Time Attack from Ontario Time Attack and CSCS, special events that include public open lapping, and winter lapping. It's curated by Paul Murray — one place to check dates, times, costs and registration links instead of chasing Facebook groups and organizer sites.</p>
         <p>Listings are taken from organizer-published sources only, and each one shows when it was last verified. Nothing here is paywalled and there are no accounts — your saved events and settings stay in your own browser.</p>
         <p>Tracks covered: Toronto Motorsports Park (Cayuga), Grand Bend Motorplex, Canadian Tire Motorsport Park (DDT and GP), Shannonville Motorsport Park, and Calabogie Motorsports Park. Cars only — no motorcycle days, no autocross, no CASC test days.</p>
-        <p><a href="https://docs.google.com/spreadsheets/d/1E3V78O6qYAWK9xRD9XsDwDtrm19LgKwgrkD-NqzuGLU/edit" target="_blank" rel="noopener">Prefer a spreadsheet? View the full list</a> · <a href="https://calendar.google.com/calendar/ical/14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8@group.calendar.google.com/public/basic.ics">Subscribe to the calendar (ICS)</a> · <a href="https://ko-fi.com/ontariotrackdays" target="_blank" rel="noopener">Support the project on Ko-fi — buy a lug nut ($5)</a></p>
+        <p><a href="https://docs.google.com/spreadsheets/d/1E3V78O6qYAWK9xRD9XsDwDtrm19LgKwgrkD-NqzuGLU/edit" target="_blank" rel="noopener">Prefer a spreadsheet? View the full list</a> · <a href="https://calendar.google.com/calendar/embed?src=14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8%40group.calendar.google.com&amp;ctz=America%2FToronto" target="_blank" rel="noopener">View the calendar (read-only)</a> · <a href="https://calendar.google.com/calendar/ical/14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8@group.calendar.google.com/public/basic.ics">Subscribe to the calendar (ICS)</a> · <a href="https://ko-fi.com/ontariotrackdays" target="_blank" rel="noopener">Support the project on Ko-fi — buy a lug nut ($5)</a></p>
         <p>Track logos belong to their respective tracks and are shown only to identify each venue.</p>
         <p>Something broken, or an idea that would make this more useful? <a href="mailto:ontariotrackdays@gmail.com?subject=Ontario%20Track%20Days%2B%20%E2%80%94%20Bug%20report&amp;body=What%20happened%3A%0A%0AWhat%20I%20expected%3A%0A">Report a bug</a> · <a href="mailto:ontariotrackdays@gmail.com?subject=Ontario%20Track%20Days%2B%20%E2%80%94%20Feature%20request&amp;body=My%20idea%3A%0A%0AWhy%20it%20would%20help%3A%0A">Request a feature</a> — both go to ontariotrackdays@gmail.com.</p>
       </div>
@@ -250,8 +251,8 @@
   <div class="wrap">
     <p>Ontario Track Days+ is a free community resource curated by Paul Murray. Listings are taken from organizer-published sources and show a last-verified date. Spotted an error? Email <a href="mailto:ontariotrackdays@gmail.com">ontariotrackdays@gmail.com</a>.</p>
     <p>Track logos belong to their respective tracks and are shown only to identify each venue.</p>
-    <p><a href="https://docs.google.com/spreadsheets/d/1E3V78O6qYAWK9xRD9XsDwDtrm19LgKwgrkD-NqzuGLU/edit" target="_blank" rel="noopener">Full list (spreadsheet)</a> · <a href="https://calendar.google.com/calendar/ical/14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8@group.calendar.google.com/public/basic.ics">Calendar feed (ICS)</a></p>
-    <p>v16</p>
+    <p><a href="https://docs.google.com/spreadsheets/d/1E3V78O6qYAWK9xRD9XsDwDtrm19LgKwgrkD-NqzuGLU/edit" target="_blank" rel="noopener">Full list (spreadsheet)</a> · <a href="https://calendar.google.com/calendar/embed?src=14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8%40group.calendar.google.com&amp;ctz=America%2FToronto" target="_blank" rel="noopener">View the calendar</a> · <a href="https://calendar.google.com/calendar/ical/14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8@group.calendar.google.com/public/basic.ics">Calendar feed (ICS)</a></p>
+    <p>v17</p>
   </div>
 </footer>
 <script src="events.js"></script>
@@ -293,6 +294,7 @@
   });
   document.getElementById('logoHome').addEventListener('click', function () { showView('events'); });
   document.getElementById('drawerSheet').addEventListener('click', function () { window.open('https://docs.google.com/spreadsheets/d/1E3V78O6qYAWK9xRD9XsDwDtrm19LgKwgrkD-NqzuGLU/edit', '_blank'); });
+  document.getElementById('drawerCalView').addEventListener('click', function () { window.open('https://calendar.google.com/calendar/embed?src=14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8%40group.calendar.google.com&ctz=America%2FToronto', '_blank'); });
   document.getElementById('drawerIcs').addEventListener('click', function () { location.href = 'https://calendar.google.com/calendar/ical/14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8@group.calendar.google.com/public/basic.ics'; });
   document.getElementById('drawerKofi').addEventListener('click', function () { window.open('https://ko-fi.com/ontariotrackdays', '_blank'); });
   document.getElementById('drawerBug').addEventListener('click', function () {
