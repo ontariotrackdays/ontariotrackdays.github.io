@@ -13,6 +13,9 @@
 //   times: "10:00 AM – 5:00 PM",
 //   cost: "$220 (cash at gate)",
 //   novice: true,                  // only true when the organizer says so — never inferred
+//                                  // Curator exception (Paul's ruling, Nov 18, 2026): Toronto Motorsports Park's OWN
+//                                  // house open-lapping days are novice-welcome by default (novice: true) — Paul
+//                                  // knows the track firsthand. All other organizers still follow the rule above.
 //   notes: "",
 //   register: "",
 //   source: "",
@@ -29,7 +32,7 @@ window.OTD_EVENTS = [
     host: "Toronto Motorsports Park",
     times: "12:00 PM – 4:00 PM",
     cost: "$140 (at the track)",
-    novice: false,
+    novice: true,
     notes: "Bonus session — the 2026 season has wrapped and TMP is running weather-dependent bonus lapping days, announced on its social media a few days ahead. Pay at the track.",
     register: "",
     source: "https://www.facebook.com/reel/1661747545497616/",
