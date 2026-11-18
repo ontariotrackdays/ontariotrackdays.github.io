@@ -109,6 +109,11 @@
   .vidwrap iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
   .vid h3 { margin:10px 2px 2px; font-size:16px; }
   .vid .meta { margin:2px; }
+  #toTop { position:fixed; right:18px; bottom:max(18px, env(safe-area-inset-bottom)); z-index:30; width:48px; height:48px; border-radius:50%; border:1px solid var(--accent); background:var(--accent); color:#fff; font-size:22px; line-height:1; cursor:pointer; box-shadow:0 4px 14px rgba(20,26,34,.28); display:flex; align-items:center; justify-content:center; opacity:0; visibility:hidden; pointer-events:none; transform:translateY(10px); transition:opacity .25s ease, transform .25s ease, visibility .25s; }
+  #toTop.show { opacity:1; visibility:visible; pointer-events:auto; transform:translateY(0); }
+  #toTop:hover { background:#8f1d16; }
+  #toTop:focus-visible { outline:2px solid #e2483d; outline-offset:2px; }
+  @media (prefers-reduced-motion: reduce) { #toTop { transition:none; } }
 </style>
 </head>
 <body>
@@ -509,7 +514,7 @@
     <p>Ontario Track Days+ is a free community resource curated by Paul Murray. Listings are taken from organizer-published sources and show a last-verified date. Spotted an error? Email <a href="mailto:ontariotrackdays@gmail.com">ontariotrackdays@gmail.com</a>.</p>
     <p>Track logos belong to their respective tracks and are shown only to identify each venue.</p>
     <p><a href="https://docs.google.com/spreadsheets/d/1E3V78O6qYAWK9xRD9XsDwDtrm19LgKwgrkD-NqzuGLU/edit" target="_blank" rel="noopener">Full list (spreadsheet)</a> · <a href="https://calendar.google.com/calendar/embed?src=14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8%40group.calendar.google.com&amp;ctz=America%2FToronto" target="_blank" rel="noopener">View the calendar</a> · <a href="https://calendar.google.com/calendar/ical/14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8@group.calendar.google.com/public/basic.ics">Calendar feed (ICS)</a></p>
-    <p>v20</p>
+    <p>v21</p>
   </div>
 </footer>
 <script src="events.js"></script>
@@ -862,6 +867,20 @@
   refreshNotifStatus();
   render();
   runAlertChecks();
+})();
+</script>
+<button id="toTop" type="button" aria-label="Back to top" title="Back to top">↑</button>
+<script>
+(function () {
+  var btn = document.getElementById('toTop');
+  if (!btn) return;
+  var reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  function onScroll() { btn.classList.toggle('show', window.scrollY > 400); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  btn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+  });
 })();
 </script>
 </body>
