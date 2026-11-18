@@ -100,6 +100,15 @@
   .navlist button:hover { border-color:var(--accent); }
   footer { border-top:1px solid var(--line); margin-top:28px; padding:16px; color:var(--mut); font-size:14px; }
   footer a { color:var(--accent); }
+  .guidesec { margin-top:30px; }
+  .guidesec h2 { margin:0 0 4px; }
+  .gdesc { margin:4px 0 0; font-size:15px; }
+  .vgrid { display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:10px; }
+  .vid { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px; }
+  .vidwrap { position:relative; padding-top:56.25%; border-radius:8px; overflow:hidden; background:#000; }
+  .vidwrap iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .vid h3 { margin:10px 2px 2px; font-size:16px; }
+  .vid .meta { margin:2px; }
 </style>
 </head>
 <body>
@@ -132,6 +141,7 @@
     <button data-view="saved">Saved events <span id="savedCount"></span></button>
     <button data-view="tracks">The tracks</button>
     <button data-view="organizers">Organizers</button>
+    <button data-view="guides">Guides</button>
     <button data-view="about">About us</button>
     <button data-view="settings">Settings</button>
   </nav>
@@ -208,6 +218,248 @@
       <div id="orgDetail"></div>
     </section>
 
+    <section id="view-guides" hidden>
+      <h2>Guides &amp; videos</h2>
+      <p class="subcount">Learn the ropes before your first day — and get more out of every day after. The written guides open on their own sites; the videos play right here. All free, like everything on this site.</p>
+
+      <div class="guidesec">
+        <h2>Know your track</h2>
+        <p class="subcount">Ontario lap &amp; track guides. Before your first day at a new track, watch someone who knows it. These come from BSquared and 2TRACKMIND — two channels worth following — and cover four Ontario tracks corner by corner.</p>
+        <div class="vgrid">
+          <div class="vid">
+            <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/Gn9Frx-lQR0" title="Calabogie Motorsports Park Track Guide — BSquared" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+            <h3>Calabogie Motorsports Park Track Guide</h3>
+            <p class="meta">BSquared — a full lap guide to Canada's longest track: braking points, reference points, and the corners that catch people out.</p>
+          </div>
+          <div class="vid">
+            <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/VqQwnYTW2fg" title="Grand Bend Motorplex Track Guide (Technical Layout) — BSquared" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+            <h3>Grand Bend Motorplex Track Guide (Technical Layout)</h3>
+            <p class="meta">BSquared — the technical layout at Grand Bend, corner by corner.</p>
+          </div>
+          <div class="vid">
+            <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/2fLYVr7OfN8" title="Toronto Motorsports Park (Cayuga) Track Guide — BSquared" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+            <h3>Toronto Motorsports Park (Cayuga) Track Guide</h3>
+            <p class="meta">BSquared — how to lap Cayuga's road course, from braking zones to the fast way onto the straight.</p>
+          </div>
+          <div class="vid">
+            <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/83ujTprZUAs" title="The Last Mosport DDT Lap Guide You'll Ever Need — 2TRACKMIND" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+            <h3>[UPDATED] The Last Mosport DDT Lap Guide You'll Ever Need</h3>
+            <p class="meta">2TRACKMIND — the DDT is CTMP's smaller driver development track in Bowmanville. This is the lap guide to watch before a day there.</p>
+          </div>
+        </div>
+        <div class="card" style="margin-top:10px">
+          <h3><a href="https://www.rookieracing.ca/articles/labour-day-weekend-track-day-guide-mosport-bowmanville" target="_blank" rel="noopener">First-Timer Guide to Canadian Tire Motorsport Park ↗</a></h3>
+          <p class="meta">Rookie Racing — written guide</p>
+          <p class="gdesc">The big CTMP Grand Prix circuit broken into three sectors for first-timers: where to put your eyes, and one goal per session.</p>
+        </div>
+      </div>
+
+      <div class="guidesec">
+        <h2>Your first track day</h2>
+        <p class="subcount">New to this? Start here — what a track day is, how the day runs, what to bring, and what it costs.</p>
+        <div class="card">
+          <h3><a href="https://www.tirerack.com/upgrade-garage/beginners-guide-to-high-performance-driver-education" target="_blank" rel="noopener">What Is HPDE? A Beginner's Guide to High Performance Driver Education ↗</a></h3>
+          <p class="meta">Tire Rack — written guide</p>
+          <p class="gdesc">What HPDE is, how a day runs, what to bring, and tire advice by experience level. The best single starting point.</p>
+        </div>
+        <div class="card">
+          <h3><a href="https://heritagetrackdays.com/first-time-track-day-guide/" target="_blank" rel="noopener">First Time Track Day Guide: Everything You Need Before Your First HPDE ↗</a></h3>
+          <p class="meta">Heritage Track Days — written guide</p>
+          <p class="gdesc">The deep version: the day hour by hour, run groups, tech checks with real numbers, tire pressures, and what gets covered in the drivers' meeting.</p>
+        </div>
+        <div class="card">
+          <h3><a href="http://getactionracing.com/blogs/guides/first-track-day-what-to-wear-bring-and-cost" target="_blank" rel="noopener">First Track Day: HPDE Gear, Checklist &amp; Costs ↗</a></h3>
+          <p class="meta">Get Action Racing — written guide</p>
+          <p class="gdesc">What's genuinely required vs. nice to have, an 8-item packing list, and an honest breakdown of what a first day costs. Written by an active IMSA racer.</p>
+        </div>
+        <div class="vgrid">
+          <div class="vid">
+            <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/C1tnSGDXYwY" title="Get to the track with your GR86/BRZ — NO EXCUSES! — Driven Media" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+            <h3>Get to the track with your GR86/BRZ — NO EXCUSES!</h3>
+            <p class="meta">Driven Media (Kevin Vo) — the whole journey in one video: finding and booking a day, gear, packing, car prep and day-of tips. The car is a GR86/BRZ, but the advice applies to anything.</p>
+          </div>
+          <div class="vid">
+            <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/8jYzVHaaoRc" title="HPDE School Part 1 — Arrival — Cascade Sports Car Club" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+            <h3>HPDE School, Part 1 — Arrival</h3>
+            <p class="meta">Cascade Sports Car Club — a real club's own school series. Part 1: what to do when you arrive at the track.</p>
+          </div>
+          <div class="vid">
+            <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/p4cHYZKxmXc" title="HPDE School Part 2 — Registration &amp; Tech — Cascade Sports Car Club" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+            <h3>HPDE School, Part 2 — Registration &amp; Tech</h3>
+            <p class="meta">Cascade Sports Car Club — signing in, and getting your car through tech inspection.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="guidesec">
+        <h2>How Ontario days actually run</h2>
+        <p class="subcount">Rules differ from track to track and organizer to organizer. For Cayuga, this is the source to trust.</p>
+        <div class="card">
+          <h3><a href="http://torontomotorsportspark.com/open-car-lapping/" target="_blank" rel="noopener">Open Car Lapping ↗</a></h3>
+          <p class="meta">Toronto Motorsports Park — the track's official page</p>
+          <p class="gdesc">TMP's own rules: the mandatory drivers' meeting, the four named passing zones, point-by rules, the two-spin rule, the 103 dB noise limit and prices. Note that TMP is more relaxed than club HPDE — helmets are optional in hard-top cars, and mandatory (Snell M or SA, 2005 or newer) in soft-tops.</p>
+        </div>
+      </div>
+
+      <div class="guidesec">
+        <h2>Prep the car</h2>
+        <p class="subcount">Your car has to pass a tech inspection before it turns a wheel. Work through this at home and you won't be fixing things in the paddock.</p>
+        <div class="card">
+          <h3><a href="https://trackmindedhpde.com/hpde-tech-inspection-checklist/" target="_blank" rel="noopener">HPDE Tech Inspection Checklist: 9 First Track Day Checks ↗</a></h3>
+          <p class="meta">TrackMinded HPDE — written guide</p>
+          <p class="gdesc">Nine checks — tires, lug-nut torque, brake pads and fluid, leaks, battery hold-down, loose items, paperwork — plus the common reasons cars fail, and a pre-tech routine to do at home. The one to print.</p>
+        </div>
+        <div class="vgrid">
+          <div class="vid">
+            <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/gXZP1zEERwA" title="How to Prepare for an Autocross or Track Event — Tire Rack" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+            <h3>How to Prepare for an Autocross or Track Event</h3>
+            <p class="meta">Tire Rack — their tech support manager walks through a pre-event inspection, step by step.</p>
+          </div>
+          <div class="vid">
+            <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/FZ8-yB3AHxM" title="How to Prep your car for a TRACK DAY — At The Wheel" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+            <h3>How to Prep your car for a TRACK DAY</h3>
+            <p class="meta">At The Wheel — hands-on prep of a street car in a home garage: fluids, tires, brakes and track pads.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="guidesec">
+        <h2>Gear &amp; helmets</h2>
+        <p class="subcount">The one purchase every track driver has to make, explained properly.</p>
+        <div class="card">
+          <h3><a href="http://getactionracing.com/blogs/guides/snell-sa2020-vs-sa2025-racing-helmet-guide" target="_blank" rel="noopener">Snell SA2020 vs SA2025 Racing Helmets ↗</a></h3>
+          <p class="meta">Get Action Racing — written guide</p>
+          <p class="gdesc">What the SA rating actually tests — flame resistance, roll-bar impacts, HANS fit — that motorcycle helmets skip, what changed for SA2025, and why an SA2020 helmet is still accepted almost everywhere.</p>
+        </div>
+        <p class="notice"><strong>Ontario note:</strong> helmet rules vary by organizer. Club and Time Attack events generally want an SA-rated helmet. TMP open lapping accepts Snell M or SA (2005 or newer) for soft-tops and doesn't require a helmet in hard-top cars. Check your organizer's rules before you buy.</p>
+      </div>
+
+      <div class="guidesec">
+        <h2>Flags &amp; etiquette</h2>
+        <p class="subcount">Flags are how the corner workers talk to you, and the point-by is how drivers talk to each other. Learn both before you need them.</p>
+        <div class="card">
+          <h3><a href="https://www.lead-footracing.com/blog/racing-flags-explained" target="_blank" rel="noopener">Racing Flags Explained: A Beginner's Track Day Guide ↗</a></h3>
+          <p class="meta">LeadFoot Racing — written guide</p>
+          <p class="gdesc">Every flag you'll see — green, yellows, debris, blue, black, red, checkered — what each one means, and the three that beginners get wrong.</p>
+        </div>
+        <div class="card">
+          <h3><a href="https://www.lead-footracing.com/blog/hpde-passing-rules-point-by" target="_blank" rel="noopener">HPDE Passing Rules: How the Point-By Actually Works ↗</a></h3>
+          <p class="meta">LeadFoot Racing — written guide</p>
+          <p class="gdesc">How passing works at a track day: the car ahead points you by, and the order is signal, hold, check, lift. Plus how the rules loosen as you move up run groups.</p>
+        </div>
+        <p class="notice"><strong>Watch out at TMP:</strong> at Cayuga open lapping, the <strong>white flag means one lap remaining</strong> — not "slow vehicle ahead" as in most guides. Flag meanings vary by organizer, and <strong>your drivers' meeting is always the final word</strong>.</p>
+        <div class="vgrid">
+          <div class="vid">
+            <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/a-XMp-GXMlw" title="HPDE School Part 3 — Out Lap, Cones &amp; Turn Stations — Cascade Sports Car Club" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+            <h3>HPDE School, Part 3 — Out Lap, Cones &amp; Turn Stations</h3>
+            <p class="meta">Cascade Sports Car Club — flags in context: what the corner stations are showing you on a real out lap.</p>
+          </div>
+          <div class="vid">
+            <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/qaZSbGlcnsQ" title="HPDE School Part 4 — Passing — Cascade Sports Car Club" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+            <h3>HPDE School, Part 4 — Passing</h3>
+            <p class="meta">Cascade Sports Car Club — point-bys done properly, shown on track.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="guidesec">
+        <h2>Driving technique</h2>
+        <p class="subcount">Once the day itself makes sense, these build the core skills: the line, braking, and smooth inputs.</p>
+        <div class="card">
+          <h3><a href="https://trackmindedhpde.com/hpde-driving-techniques/" target="_blank" rel="noopener">Driving Techniques to Review for Your First Track Day and Beyond ↗</a></h3>
+          <p class="meta">TrackMinded HPDE — written guide</p>
+          <p class="gdesc">The fundamentals in one page: the racing line, where to look, threshold braking, weight transfer, and slow in, fast out.</p>
+        </div>
+        <div class="card">
+          <h3><a href="https://driver61.com/uni/how-to-heel-and-toe/" target="_blank" rel="noopener">How to Heel and Toe (and Rev Match) ↗</a></h3>
+          <p class="meta">Driver61 (Scott Mansell) — written guide</p>
+          <p class="gdesc">Step-by-step heel-and-toe with the gear charts that explain why rev-matching matters, and how to practise it. Manual gearboxes only.</p>
+        </div>
+        <div class="vgrid">
+          <div class="vid">
+            <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/aZlOkt1oU2k" title="The Racing Line — How to Drive the Perfect Corner — Driver61" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+            <h3>The Racing Line — How to Drive the Perfect Corner</h3>
+            <p class="meta">Driver61 — braking point, turn-in, apex and exit, explained with diagrams. The place to start.</p>
+          </div>
+          <div class="vid">
+            <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/z-eFpAu50rs" title="The Ultimate Guide to Braking on Track — Driver61" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+            <h3>The Ultimate Guide to Braking on Track</h3>
+            <p class="meta">Driver61 — braking with and without ABS, picking your reference points, and the mistakes that cost time.</p>
+          </div>
+          <div class="vid">
+            <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/f6yAO1ziQ8o" title="How to Heel and Toe Like Senna: Rev-Matching Tutorial — Driver61" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+            <h3>How to Heel and Toe Like Senna: Rev-Matching Tutorial</h3>
+            <p class="meta">Driver61 — footwork close-ups to go with the written guide above. Manual gearboxes only.</p>
+          </div>
+          <div class="vid">
+            <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/2CnlEpTj8jY" title="5 THINGS I WISH I KNEW BEFORE I STARTED RACING — BSquared" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+            <h3>5 THINGS I WISH I KNEW BEFORE I STARTED RACING</h3>
+            <p class="meta">BSquared — hard-won lessons from one of the channels behind the track guides at the top of this page.</p>
+          </div>
+          <div class="vid">
+            <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLqIRv9MVPKPPgeeBYWvYXb6iI8KVNw-83" title="Racing Techniques playlist — Race Ready Powerhouse" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+            <h3>Racing Techniques (playlist)</h3>
+            <p class="meta">Race Ready Powerhouse — a 16-video playlist of technique sessions, curated from top drivers and coaches.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="guidesec">
+        <h2>Choosing a track car</h2>
+        <p class="subcount">Thinking of buying something for track days? Watch this before you spend anything.</p>
+        <div class="vgrid">
+          <div class="vid">
+            <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/bxLT73NURdA" title="Do You OWN the BEST Car for the TRACK? The Definitive Guide To Buying the Right Track Car! — Speed Academy" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+            <h3>Do You OWN the BEST Car for the TRACK? The Definitive Guide To Buying the Right Track Car!</h3>
+            <p class="meta">Speed Academy — what actually makes a car good on track, what to avoid, and how to pick the right one.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="guidesec">
+        <h2>Going further</h2>
+        <p class="subcount">When lapping turns into "I want to compete" — or you just want to get faster on purpose.</p>
+        <div class="card">
+          <h3><a href="https://www.casc.on.ca/sites/default/files/Documents/Join-Ontario-Time-Attack-Quick-start-guide.pdf" target="_blank" rel="noopener">Quick Start Guide: Getting Involved in the CASC-OR Ontario Time Attack Series (PDF) ↗</a></h3>
+          <p class="meta">CASC-OR — written guide</p>
+          <p class="gdesc">The official Ontario pathway: join a CASC-OR club, get HPDE experience and a sign-off, classify your car, get your licence, enter Time Attack. Some dates inside the document are old — check time-attack.ca for current dates.</p>
+        </div>
+        <div class="vgrid">
+          <div class="vid">
+            <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PL3CXNvy0K9ZoSD_sPfWBEtCdFA-8z7opt" title="How-To and Tutorials playlist — Cameron Das Racing" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+            <h3>How-To and Tutorials (playlist)</h3>
+            <p class="meta">Cameron Das Racing — data analysis and advanced technique from a pro open-wheel driver, including how to analyse your own laps for free.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="guidesec">
+        <h2>Winter lapping</h2>
+        <p class="subcount">Low grip teaches fast hands. Winter lapping runs in Ontario through the cold months — here's how to be ready for it.</p>
+        <div class="card">
+          <h3><a href="https://www.rookieracing.ca/articles/winter-ice-racing-minden-ontario-car-control-lessons" target="_blank" rel="noopener">Minden Winter Ice Racing Teaches Quick Hands ↗</a></h3>
+          <p class="meta">Rookie Racing — written guide</p>
+          <p class="gdesc">Ice racing at Minden in the Haliburton Highlands: catching slides at low speed, and the quick hands that carry over to summer.</p>
+        </div>
+        <div class="card">
+          <h3><a href="https://Michelin.ca/auto/auto-tips-and-advice/winter-driving/driving-snow" target="_blank" rel="noopener">Quick Tips for Safe Driving on Ice &amp; Snow ↗</a></h3>
+          <p class="meta">Michelin Canada — written guide</p>
+          <p class="gdesc">The basics under winter driving: proper winter tires, smooth inputs, brake before the turn — never in it — and skid recovery. From a Canadian source.</p>
+        </div>
+        <div class="vgrid">
+          <div class="vid">
+            <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/U0c0z0W6aEE" title="Differentials and Traction Control Explained — Team O'Neil Rally School" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+            <h3>Differentials and Traction Control Explained</h3>
+            <p class="meta">Team O'Neil Rally School — how your differentials and traction control actually behave on snow and ice, from a school that teaches on low grip all year.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:26px">
+        <p style="margin:0">Know a guide or video that belongs here? <a href="mailto:ontariotrackdays@gmail.com?subject=Ontario%20Track%20Days%2B%20%E2%80%94%20Guide%20suggestion&amp;body=Link%3A%0A%0AWhy%20it%20helps%3A%0A">Email it in</a> — the list grows as good material turns up.</p>
+      </div>
+    </section>
+
     <section id="view-about" hidden>
       <h2>About us</h2>
       <div class="panel">
@@ -252,7 +504,7 @@
     <p>Ontario Track Days+ is a free community resource curated by Paul Murray. Listings are taken from organizer-published sources and show a last-verified date. Spotted an error? Email <a href="mailto:ontariotrackdays@gmail.com">ontariotrackdays@gmail.com</a>.</p>
     <p>Track logos belong to their respective tracks and are shown only to identify each venue.</p>
     <p><a href="https://docs.google.com/spreadsheets/d/1E3V78O6qYAWK9xRD9XsDwDtrm19LgKwgrkD-NqzuGLU/edit" target="_blank" rel="noopener">Full list (spreadsheet)</a> · <a href="https://calendar.google.com/calendar/embed?src=14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8%40group.calendar.google.com&amp;ctz=America%2FToronto" target="_blank" rel="noopener">View the calendar</a> · <a href="https://calendar.google.com/calendar/ical/14d3bde203e23c82b7e6cb86b358c0013cf8026a773796597442e211915ac5f8@group.calendar.google.com/public/basic.ics">Calendar feed (ICS)</a></p>
-    <p>v19</p>
+    <p>v20</p>
   </div>
 </footer>
 <script src="events.js"></script>
@@ -283,7 +535,7 @@
   document.getElementById('menuClose').addEventListener('click', closeMenu);
   overlay.addEventListener('click', closeMenu);
   document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') closeMenu(); });
-  var viewNames = ['events', 'saved', 'tracks', 'track', 'organizers', 'organizer', 'about', 'settings'];
+  var viewNames = ['events', 'saved', 'tracks', 'track', 'organizers', 'organizer', 'guides', 'about', 'settings'];
   function showView(name) {
     viewNames.forEach(function (v) { document.getElementById('view-' + v).hidden = v !== name; });
     closeMenu();
