@@ -215,6 +215,22 @@ window.OTD_EVENTS = [
     lastVerified: "2026-11-18"
   },
   {
+    title: "VARAC Vintage Grand Prix — Street Car Lapping",
+    date: "2027-06-17",
+    dateLabel: "Thu, Jun 17, 2027",
+    track: "Canadian Tire Motorsport Park",
+    configuration: "Grand Prix Circuit",
+    category: "Special Event — Lapping",
+    host: "VARAC",
+    times: "",
+    cost: "",
+    novice: false,
+    notes: "Street Car Lapping sessions are offered on Thursday, June 17, 2027 as part of the VARAC Vintage Grand Prix Track Orientation / Test Day (47th Vintage Grand Prix, June 17-20, 2027). Drivers for the Street Car Lapping require only a valid provincial driving licence in good standing. Lapping times and fee have not yet been published by VARAC.",
+    register: "https://varac.motorsportreg.com/events/2027-varac-vintage-grand-prix-canadian-tire-motorsport-park-canada-621862",
+    source: "https://varac.motorsportreg.com/events/2027-varac-vintage-grand-prix-canadian-tire-motorsport-park-canada-621862",
+    lastVerified: "2026-11-18"
+  },
+  {
     title: "DriveTeq Track Day – Canada 160 Day Kick-Off",
     date: "2027-06-22",
     dateLabel: "Tue, Jun 22, 2027",
