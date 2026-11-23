@@ -72,6 +72,22 @@ window.OTD_EVENTS = [
   },
   {
     title: "Open Car Lapping — Bonus Session",
+    date: "2026-11-22",
+    dateLabel: "Sun, Nov 22, 2026",
+    track: "Toronto Motorsports Park",
+    configuration: "",
+    category: "Lapping",
+    host: "Toronto Motorsports Park",
+    times: "10:00 AM – 5:00 PM",
+    cost: "$220 (at the track)",
+    novice: true,
+    notes: "Bonus session — the 2026 season has wrapped and TMP is running weather-dependent bonus lapping days, announced on its social media a few days ahead. Pay at the track.",
+    register: "",
+    source: "https://www.facebook.com/reel/898679520001427",
+    lastVerified: "2026-11-23"
+  },
+  {
+    title: "Open Car Lapping — Bonus Session",
     date: "2026-11-23",
     dateLabel: "Mon, Nov 23, 2026",
     track: "Toronto Motorsports Park",
