@@ -90,6 +90,7 @@
     </div>
 
     <form id="otdForm" action="https://docs.google.com/forms/d/e/1FAIpQLSeztqY2Q20CtPgx4Go6wK34TKBoIQbG_hXrzk01CSMKIQ_U7w/formResponse" method="post" target="otdSink" novalidate>
+    <input type="hidden" name="pageHistory" value="0,1,2,3,4">
       <div class="group">
         <h2>What are you submitting? <span class="req" aria-hidden="true">*</span></h2>
         <div class="typecards" role="radiogroup" aria-label="What are you submitting?">
@@ -102,7 +103,7 @@
       <div class="group" id="group-event">
         <h2>Event details</h2>
         <p class="gdesc">Only what's published — if a detail isn't published yet, leave it blank and it will show as "Not published".</p>
-        <div class="field" data-req="event"><label for="evName">Event name <span class="req" aria-hidden="true">*</span></label><input type="text" id="evName" name="entry.1253930198"></div>
+        <div class="field" data-req="event"><label for="evName">Event name <span class="req" aria-hidden="true">*</span></label><input type="text" id="evName" name="entry.1259390198"></div>
         <div class="field" data-req="event"><label for="evDate">Event date <span class="req" aria-hidden="true">*</span></label><input type="text" id="evDate" name="entry.1405933740" placeholder="Saturday, June 17, 2027"><p class="hint">For a multi-day event, give the first and last day.</p></div>
         <div class="field" data-req="event"><label for="evTrack">Track <span class="req" aria-hidden="true">*</span></label>
           <select id="evTrack" name="entry.1471986571">
@@ -129,7 +130,7 @@
             <option>Racing school (own car)</option>
             <option>Other</option>
           </select></div>
-        <div class="field"><label for="evConfig">Track configuration</label><input type="text" id="evConfig" name="entry.1353986533"><p class="hint">If the organizer publishes one — for example: Long Track, Grand Prix Circuit.</p></div>
+        <div class="field"><label for="evConfig">Track configuration</label><input type="text" id="evConfig" name="entry.1353886533"><p class="hint">If the organizer publishes one — for example: Long Track, Grand Prix Circuit.</p></div>
         <div class="field"><label for="evTimes">Times</label><input type="text" id="evTimes" name="entry.1133365744" placeholder="9:00 AM – 5:00 PM"><p class="hint">Leave blank if not published.</p></div>
         <div class="field"><label for="evCost">Cost</label><input type="text" id="evCost" name="entry.337028339" placeholder="$250 + HST"><p class="hint">As published. Leave blank if not published.</p></div>
         <div class="field"><span style="display:block;font-size:15px;font-weight:600;margin:0 0 5px">Are novice drivers welcome?</span>
@@ -150,7 +151,7 @@
         <div class="field"><label for="orgWeb">Organizer website</label><input type="url" id="orgWeb" name="entry.1969409115"></div>
         <div class="field"><label for="orgEmail">Organizer email</label><input type="email" id="orgEmail" name="entry.1785125619"></div>
         <div class="field"><label for="orgPhone">Organizer phone</label><input type="tel" id="orgPhone" name="entry.269311315"></div>
-        <div class="field"><label for="orgFb">Organizer Facebook page</label><input type="text" id="orgFb" name="entry.1833166972"><p class="hint">Page name or link.</p></div>
+        <div class="field"><label for="orgFb">Organizer Facebook page</label><input type="text" id="orgFb" name="entry.1033166972"><p class="hint">Page name or link.</p></div>
         <div class="field"><label for="orgIg">Organizer Instagram</label><input type="text" id="orgIg" name="entry.1973024159"><p class="hint">Handle or link.</p></div>
         <div class="field"><span style="display:block;font-size:15px;font-weight:600;margin:0 0 5px">Tracks they run at</span>
           <div class="checks">
