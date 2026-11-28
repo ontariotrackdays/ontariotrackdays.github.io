@@ -103,6 +103,22 @@ window.OTD_EVENTS = [
     lastVerified: "2026-11-22"
   },
   {
+    title: "Open Car Lapping — Bonus Session",
+    date: "2026-11-28",
+    dateLabel: "Sat, Nov 28, 2026",
+    track: "Toronto Motorsports Park",
+    configuration: "",
+    category: "Lapping",
+    host: "Toronto Motorsports Park",
+    times: "11:00 AM – 4:00 PM",
+    cost: "$100 (at the track)",
+    novice: true,
+    notes: "Bonus session — the 2026 season has wrapped and TMP is running weather-dependent bonus lapping days, announced on its social media a few days ahead. Open Car Lapping & Drifting day, split into dedicated segments for drifting and Open Car Lapping. Pay at the track.",
+    register: "",
+    source: "https://www.facebook.com/reel/1685421536584928/",
+    lastVerified: "2026-11-28"
+  },
+  {
     title: "Winter Driving School",
     date: "2027-01-09",
     dateLabel: "Sat, Jan 9, 2027",
